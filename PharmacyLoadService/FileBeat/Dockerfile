@@ -1,7 +1,7 @@
 FROM docker.elastic.co/beats/filebeat:5.6.3
 
 # File Author / Maintainer
-MAINTAINER Cristiano Ressi Di Cervia
+LABEL maintainer="Cristiano Ressi Di Cervia"
 
 #Evironment Variable
 ENV FILEBEAT_CONFIG_DIR /usr/share/filebeat/
