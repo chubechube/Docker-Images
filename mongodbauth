@@ -1,0 +1,102 @@
+db.createUser({ user: 'Welfinity2017!', pwd: 'sAt5a&rU@aT2', roles: [ { role: "userAdminAnyDatabase", db: "admin" } ] });
+
+
+----script
+
+use admin
+db.createUser(
+    {
+      user: "WelfinitySuperUser",
+      pwd: "fEcUc8a*ur?h",
+      roles: [ "root" ]
+    }
+)
+
+db.auth('Welfinity2017!','sAt5a&rU@aT2');
+db.grantRolesToUser("Welfinity2017!", [ { role: "readWrite", db: "admin" } ])
+db.grantRolesToUser("Welfinity2017!", [ { role: "readWrite", db: "Pharmacies_list" } ])
+db.grantRolesToUser("Welfinity2017!", [ { role: "readWrite", db: "Product_Dictionaries_Italy" } ])
+db.grantRolesToUser("Welfinity2017!", [ { role: "readWrite", db: "markets" } ])
+
+use Pharmacies_list
+db.createUser(
+  {
+    user: "talendUser",
+    pwd: "ba+Req6@agu6",
+    roles: [
+       { role: "readWrite", db: "Pharmacies_list" }
+    ]
+  }
+)
+
+
+use Product_Dictionaries_Italy
+db.createUser(
+  {
+    user: "talendUser",
+    pwd: "ba+Req6@agu6",
+    roles: [
+       { role: "readWrite", db: "Product_Dictionaries_Italy" }
+    ]
+  }
+)
+
+
+
+
+use markets
+db.createUser(
+  {
+    user: "talendUser",
+    pwd: "ba+Req6@agu6",
+    roles: [
+       { role: "readWrite", db: "markets" }
+    ]
+  }
+)
+
+
+
+
+db.grantRolesToUser("Welfinity2017!", [ { role: "readWrite", db: "Product_Dictionaries_Italy" } ])
+
+db.createUser(
+    {
+      user: "WelfinitySuperUser",
+      pwd: "fEcUc8a*ur?h",
+      roles: [ "root" ]
+    }
+)
+
+
+
+use markets
+db.grantRolesToUser(
+   "talendUser",
+   [ "readWrite" ]
+)
+
+
+Data:
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.container.start_once: 'true'
+  tty: true
+  image: busybox
+  volumes:
+  - /data/db
+  stdin_open: true
+MongoDB:
+  ports:
+  - 27017:27017/tcp
+  labels:
+    io.rancher.sidekicks: Data
+    io.rancher.container.pull_image: always
+  command:
+  - mongod
+  - --auth
+  tty: true
+  image: mongo:3.2
+  volumes_from:
+  - Data
+  stdin_open: true

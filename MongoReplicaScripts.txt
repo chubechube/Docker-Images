@@ -1,0 +1,42 @@
+docker build -f MongoReplica/Dockerfile -t mongoreplica:latest MongoReplica
+
+
+secondary 
+docker run -d -p 30003:27017 --name mongo3 --net mongo-cluster  mongoreplica:latest
+
+arbriter 
+docker run -d -p 30002:27017 -e JOURNLING=false --name mongo2 --net mongo-cluster   mongoreplica:latest
+
+primary 
+docker run -d -p 30001:27017  --name mongo1 -e MONGO_ROLE="primary"  -e MONGO_SECONDARY="mongo2:27017"  -e MONGO_ARBITER="mongo3:27017"    --net mongo-cluster    mongoreplica:latest
+
+
+
+mongodb://root:root123@mongo1:27017,mongo2:27017/admin?replicaSet=rs0
+
+
+
+stop all containers:
+docker kill $(docker ps -q)
+
+remove all containers
+docker rm $(docker ps -a -q)
+
+remove all docker images
+docker rmi $(docker images -q)
+
+
+docker run -p 30001:27017 --name mongo1 --net mongo-cluster mongoreplica
+
+mongo localhost:30001 -u "root" -p "root123" --authenticationDatabase "admin"
+
+
+secondary 
+docker run -d -p 30003:27017 -h mongo3 --name mongo3  --net mongo-cluster mongoreplica:latest
+
+arbriter 
+docker run -d -p 30002:27017 -h mongo2 -e JOURNLING=false --name mongo2 --net mongo-cluster   mongoreplica:latest
+
+primary 
+docker run -d -p 30001:27017  -h mongo1 --name mongo1 --net mongo-cluster -e MONGO_ROLE="primary"  -e MONGO_SECONDARY="mongo2:27017"  -e MONGO_ARBITER="mongo3:27017"   mongoreplica:latest
+

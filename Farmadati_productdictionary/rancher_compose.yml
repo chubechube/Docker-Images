@@ -1,0 +1,29 @@
+LogContainer:
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.container.start_once: 'true'
+  tty: true
+  image: busybox
+  volumes:
+  - /var/log/welfinity/talend/farmadati/
+  - /var/log/welfinity/script/farmadati/
+  stdin_open: true
+FileBeat:
+  labels:
+    io.rancher.container.pull_image: always
+  tty: true
+  image: chube/filebeatservice:latest
+  volumes_from:
+  - LogContainer
+  stdin_open: true
+  net: bridge
+FarmadatiTalendJobs:
+  labels:
+    io.rancher.sidekicks: FileBeat,LogContainer
+    io.rancher.container.pull_image: always
+  tty: true
+  image: chube/farmadatitalendjobs:latest
+  volumes_from:
+  - LogContainer
+  stdin_open: true
+  net: bridge
