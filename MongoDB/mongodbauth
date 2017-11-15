@@ -1,4 +1,4 @@
-db.createUser({ user: 'Welfinity2017!', pwd: 'sAt5a&rU@aT2', roles: [ { role: "userAdminAnyDatabase", db: "admin" } ] });
+eseguire su container mongo db.createUser({ user: 'Welfinity2017!', pwd: 'sAt5a&rU@aT2', roles: [ { role: "userAdminAnyDatabase", db: "admin" } ] });
 
 
 ----script
