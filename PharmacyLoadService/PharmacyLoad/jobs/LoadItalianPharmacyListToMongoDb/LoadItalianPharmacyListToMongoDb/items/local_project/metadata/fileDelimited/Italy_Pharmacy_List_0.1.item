@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:TalendMetadata="http://www.talend.org/metadata/connection/2010" xmlns:orgomg.cwm.resource.record="http:///orgomg/cwm/resource/record.ecore">
+  <TalendMetadata:DelimitedFileConnection xmi:id="_fAgPUIMeEeeKhoCz6hMvxA" name="Italy_Pharmacy_List" dataPackage="_fAgPUYMeEeeKhoCz6hMvxA" Server="Localhost 127.0.0.1" FilePath="/data/PharmaciesLists/italy.csv" Encoding="US-ASCII" FieldSeparatorValue="&quot;;&quot;" RowSeparatorValue="&quot;\n&quot;" UseHeader="true" HeaderValue="1" FooterValue="0" LimitValue="" FirstLineCaption="true" EscapeChar="&quot;\&quot;&quot;" TextEnclosure="&quot;\&quot;&quot;"/>
+  <orgomg.cwm.resource.record:RecordFile xmi:id="_fAgPUYMeEeeKhoCz6hMvxA" name="default" dataManager="_fAgPUIMeEeeKhoCz6hMvxA">
+    <ownedElement xsi:type="TalendMetadata:MetadataTable" xmi:id="_fAgPUoMeEeeKhoCz6hMvxA" id="_NYIDYIMeEeeKhoCz6hMvxA" label="metadata">
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPU4MeEeeKhoCz6hMvxA" label="CODICEIDENTIFICATIVOFARMACIA" length="2" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPVIMeEeeKhoCz6hMvxA" label="CODFARMACIAASSEGNATODAASL" length="5" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPVYMeEeeKhoCz6hMvxA" label="INDIRIZZO" length="30" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPVoMeEeeKhoCz6hMvxA" label="DESCRIZIONEFARMACIA" length="86" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPV4MeEeeKhoCz6hMvxA" label="PARTITAIVA" length="11" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPWIMeEeeKhoCz6hMvxA" label="CAP" length="5" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPWYMeEeeKhoCz6hMvxA" label="CODICECOMUNEISTAT" length="6" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPWoMeEeeKhoCz6hMvxA" label="DESCRIZIONECOMUNE" length="16" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPW4MeEeeKhoCz6hMvxA" label="FRAZIONE" length="-1" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPXIMeEeeKhoCz6hMvxA" label="CODICEPROVINCIAISTAT" length="3" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPXYMeEeeKhoCz6hMvxA" label="SIGLAPROVINCIA" length="2" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPXoMeEeeKhoCz6hMvxA" label="DESCRIZIONEPROVINCIA" length="7" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPX4MeEeeKhoCz6hMvxA" label="CODICEREGIONE" length="3" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPYIMeEeeKhoCz6hMvxA" label="DESCRIZIONEREGIONE" length="8" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPYYMeEeeKhoCz6hMvxA" label="DATAINIZIOVALIDITA" length="10" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPYoMeEeeKhoCz6hMvxA" label="DATAFINEVALIDITA" length="10" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPY4MeEeeKhoCz6hMvxA" label="DESCRIZIONETIPOLOGIA" length="9" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPZIMeEeeKhoCz6hMvxA" label="CODICETIPOLOGIA" length="1" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPZYMeEeeKhoCz6hMvxA" label="LATITUDINE" length="16" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPZoMeEeeKhoCz6hMvxA" label="LONGITUDINE" length="16" talendType="id_String" pattern="&quot;dd-MM-yyyy&quot;"/>
+      <feature xsi:type="TalendMetadata:MetadataColumn" xmi:id="_fAgPZ4MeEeeKhoCz6hMvxA" label="LOCALIZE" length="1" talendType="id_Integer" pattern="&quot;dd-MM-yyyy&quot;"/>
+    </ownedElement>
+  </orgomg.cwm.resource.record:RecordFile>
+</xmi:XMI>

@@ -12,7 +12,7 @@ FileBeat:
   labels:
     io.rancher.container.pull_image: always
   tty: true
-  image: chube/filebeatservice:latest
+  image: chube/filebeatpls:latest
   volumes_from:
   - LogContainer
   stdin_open: true
@@ -22,7 +22,7 @@ PharmacyLoadService:
     io.rancher.sidekicks: FileBeat,LogContainer
     io.rancher.container.pull_image: always
   tty: true
-  image: chube/PharmacyLoadService:latest
+  image: chube/pharmacyload:latest
   volumes_from:
   - LogContainer
   stdin_open: true
