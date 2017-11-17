@@ -16,7 +16,7 @@
 #
 # Use a descriptive name for the node:
 #
-node.name: WlefinityLogstash
+ node.name: WelfinityLogstash
 #
 # If omitted the node name will default to the machine's host name
 #
@@ -61,7 +61,7 @@ node.name: WlefinityLogstash
 #
 # Where to fetch the pipeline configuration for the main pipeline
 #
-path.config: /usr/share/logstash/pipeline
+ path.config: /usr/share/logstash/pipeline
 #
 # Pipeline configuration string for the main pipeline
 #
@@ -210,4 +210,7 @@ path.config: /usr/share/logstash/pipeline
 # ------------ Other Settings --------------
 #
 # Where to find custom plugins
-path.plugins: /usr/share/logstash/plugins
+# path.plugins: [/usr/share/logstash/plugins]
+ xpack.monitoring.enabled: false
+
+

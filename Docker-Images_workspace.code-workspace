@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "PharmacyLoadService"
+		},
+		{
+			"path": "MongoDB"
+		},
+		{
+			"path": "ELK"
+		}
+	],
+	"settings": {}
+}
