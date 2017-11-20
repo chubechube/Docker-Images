@@ -1,0 +1,39 @@
+LogContainer:
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.container.start_once: 'true'
+  tty: true
+  image: busybox
+  volumes:
+  - /var/log/welfinity/talend/WIM/
+  - /var/log/welfinity/script/WIM/
+  stdin_open: true
+DataContainer:
+  labels:
+    io.rancher.container.pull_image: always
+    io.rancher.container.start_once: 'true'
+  tty: true
+  image: busybox
+  volumes:
+  - /data
+  stdin_open: true
+FileBeat:
+  labels:
+    io.rancher.container.pull_image: always
+  tty: true
+  image: chube/filebeatWIM:latest
+  volumes_from:
+  - LogContainer
+  stdin_open: true
+  net: bridge
+WIMService:
+  labels:
+    io.rancher.sidekicks: FileBeat,LogContainer
+    io.rancher.container.pull_image: always
+  tty: true
+  image: chube/WIM:latest
+  volumes_from:
+  - LogContainer
+  - DataContainer
+  stdin_open: true
+  net: bridge
