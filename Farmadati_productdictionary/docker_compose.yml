@@ -1,0 +1,22 @@
+version: '2'
+volumes:
+  logcontainer: {}
+  datacontainer: {}
+services:
+   FileBeat:
+    image: chube/filebeatfarmadati:latest
+    volumes:
+    - logcontainer:/var/log/welfinity/
+    labels:
+      io.rancher.container.pull_image: always
+    tty: true
+    stdin_open: true
+  FarmadatiTalendJobs:
+    image: chube/farmadatiservice:latest
+    volumes:
+    - logcontainer:/var/log/welfinity/
+    labels:
+      io.rancher.container.pull_image: always
+    tty: true
+    stdin_open: true
+

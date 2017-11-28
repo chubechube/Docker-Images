@@ -1,0 +1,19 @@
+version: '2'
+volumes:
+  mongodata: {}
+services:
+  MongoDB:
+    image: chube/welfinity_mongo:latest
+    hostname: WelfinityMongo
+    ports:
+    - 27017:27017/tcp
+    labels:
+      io.rancher.container.pull_image: always
+    command:
+    - mongod
+    - --auth
+    tty: true
+    volumes:
+    - mongodata:/data/db
+    stdin_open: true
+  

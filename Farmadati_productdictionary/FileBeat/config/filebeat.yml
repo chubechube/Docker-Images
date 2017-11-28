@@ -141,7 +141,7 @@ filebeat.prospectors:
 #----------------------------- Logstash output --------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["217.182.194.167:5044"]
+  hosts: ["test-LogStash-1:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications

@@ -1,4 +1,4 @@
-FROM busybox
+FROM docker.elastic.co/logstash/logstash:5.6.2
 
 # File Author / Maintainer
 LABEL maintainer="Cristiano Ressi Di Cervia"
@@ -14,5 +14,6 @@ USER root
 RUN mkdir -p $LOGSTASH_CONFIG_DIR
 RUN mkdir -p $LOGSTASH_PIPELINE_DIR
 ADD config $LOGSTASH_CONFIG_DIR
+RUN rm $LOGSTASH_PIPELINE_DIR/*.*
 ADD pipeline $LOGSTASH_PIPELINE_DIR
 

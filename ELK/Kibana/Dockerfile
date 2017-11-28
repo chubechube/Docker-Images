@@ -1,4 +1,4 @@
-FROM busybox
+FROM docker.elastic.co/kibana/kibana:5.6.2
 
 # File Author / Maintainer
 LABEL maintainer="Cristiano Ressi Di Cervia"

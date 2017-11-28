@@ -1,0 +1,20 @@
+version: '2'
+volumes:
+  logcontainer: {}
+services:
+  FileBeat:
+    labels:
+      io.rancher.container.pull_image: always
+    tty: true
+    image: chube/filebeatpls:latest
+    volumes:
+    - logcontainer:/var/log/welfinity/
+    stdin_open: true
+  PharmacyLoadService:
+    labels:
+      io.rancher.container.pull_image: always
+    tty: true
+    image: chube/pharmacyload:latest
+    volumes:
+    - logcontainer:/var/log/welfinity/
+    stdin_open: true
