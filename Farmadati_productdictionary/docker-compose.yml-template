@@ -3,12 +3,13 @@ volumes:
   logcontainer: {}
   datacontainer: {}
 services:
-   FileBeat:
+  FileBeat:
     image: chube/filebeatfarmadati:latest
     volumes:
     - logcontainer:/var/log/welfinity/
     labels:
       io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
     tty: true
     stdin_open: true
   FarmadatiTalendJobs:
@@ -17,6 +18,7 @@ services:
     - logcontainer:/var/log/welfinity/
     labels:
       io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
     tty: true
     stdin_open: true
 

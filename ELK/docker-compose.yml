@@ -9,12 +9,11 @@ services:
       XPACK_MONITORING_ENABLED: 'false'
     stdin_open: true
     tty: true
-    links:
-    - ElasticSearch:WelfinityElasticSearch
     ports:
     - 5601:5601/tcp
     labels:
       io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
   ElasticSearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.2
     hostname: ElasticSearch
@@ -26,22 +25,19 @@ services:
     volumes:
     - esdata:/usr/share/elasticsearch/data
     tty: true
-    links:
-    - Kibana:WelfinityKibana
-    - LogStash:WelfinityLogstash
     ports:
     - 9200:9200/tcp
     - 9300:9300/tcp
     labels:
       io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
   LogStash:
     image: chube/elk_logstash
     hostname: WelfinityLogstash
     stdin_open: true
     tty: true
-    links:
-    - ElasticSearch:WelfinityElasticSearch
     ports:
     - 5044:5044/tcp
     labels:
       io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"

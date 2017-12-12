@@ -1,20 +1,24 @@
 version: '2'
 volumes:
   logcontainer: {}
+  datacontainer: {}
 services:
   FileBeat:
+    image: chube/filebeatwim:latest
     labels:
       io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
     tty: true
-    image: chube/filebeatpls:latest
     volumes:
     - logcontainer:/var/log/welfinity/
     stdin_open: true
-  PharmacyLoadService:
+  WIMService:
+    image: chube/wimservice:latest
     labels:
       io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
     tty: true
-    image: chube/pharmacyload:latest
     volumes:
     - logcontainer:/var/log/welfinity/
+    - datacontainer:/data/
     stdin_open: true

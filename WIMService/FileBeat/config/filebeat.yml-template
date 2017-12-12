@@ -20,7 +20,7 @@ filebeat.prospectors:
 
   # Paths that should be crawled and fetched. Glob based paths.
   paths:
-    - /var/log/welfinity/talend/pharmacyload/*.log
+    - /var/log/welfinity/talend/WIM/*.log
 
 
   # Exclude lines. A list of regular expressions to match. It drops the lines that are
@@ -41,7 +41,7 @@ filebeat.prospectors:
   #  level: debug
   #  review: 1
   fields:
-    service_id: PharmacyLoadService
+    service_id: WIMService
     service_component_type: talend
   ### Multiline options
 
@@ -67,7 +67,7 @@ filebeat.prospectors:
   # Paths that should be crawled and fetched. Glob based paths.
   paths:
 
-    - /var/log/welfinity/script/pharmacyload/*.log
+    - /var/log/welfinity/script/WIM/*.log
    
 
   # Exclude lines. A list of regular expressions to match. It drops the lines that are
@@ -88,7 +88,7 @@ filebeat.prospectors:
   #  level: debug
   #  review: 1
   fields:
-    service_id: PharmacyLoadService
+    service_id: WIMService
     service_component_type: scripts
   ### Multiline options
 
@@ -141,7 +141,7 @@ filebeat.prospectors:
 #----------------------------- Logstash output --------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["test-LogStash-1:5044"]
+  hosts: ["logstash.{ELK-STAK}:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications

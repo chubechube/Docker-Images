@@ -34,15 +34,15 @@ echo "$LOG_DATE Tables dowload from Farmadati SOAP Service"
 
 #Tables upload to Welfinity MongoDB
 echo "$LOG_DATE Tables upload to Welfinity MongoDB"
- /opt/welfinity/talend/scripts/farmadati/LoadFarmadatiTableTR001ToMongoDB.sh 217.182.194.167 27017 Product_Dictionaries_Italy TR001 talendUser ba+Req6@agu6  /var/log/welfinity/talend/farmadati/
+ /opt/welfinity/talend/scripts/farmadati/LoadFarmadatiTableTR001ToMongoDB.sh 94.23.179.228 27017 Product_Dictionaries_Italy TR001 talendUser ba+Req6@agu6  /var/log/welfinity/talend/farmadati/
 
- /opt/welfinity/talend/scripts/farmadati/LoadFarmadatiTableTR017ToMongoDB.sh 217.182.194.167 27017 Product_Dictionaries_Italy TR017 talendUser ba+Req6@agu6  /var/log/welfinity/talend/farmadati/
+ /opt/welfinity/talend/scripts/farmadati/LoadFarmadatiTableTR017ToMongoDB.sh 94.23.179.228 27017 Product_Dictionaries_Italy TR017 talendUser ba+Req6@agu6  /var/log/welfinity/talend/farmadati/
 
- /opt/welfinity/talend/scripts/farmadati/LoadFarmadatiTableTS010ToMongoDB.sh 217.182.194.167 27017 Product_Dictionaries_Italy TS010 talendUser ba+Req6@agu6  /var/log/welfinity/talend/farmadati/
+ /opt/welfinity/talend/scripts/farmadati/LoadFarmadatiTableTS010ToMongoDB.sh 94.23.179.228 27017 Product_Dictionaries_Italy TS010 talendUser ba+Req6@agu6  /var/log/welfinity/talend/farmadati/
 
- /opt/welfinity/talend/scripts/farmadati/LoadFarmadatiTableTS019ToMongoDB.sh 217.182.194.167 27017 Product_Dictionaries_Italy TS019 talendUser ba+Req6@agu6  /var/log/welfinity/talend/farmadati/
+ /opt/welfinity/talend/scripts/farmadati/LoadFarmadatiTableTS019ToMongoDB.sh 94.23.179.228 27017 Product_Dictionaries_Italy TS019 talendUser ba+Req6@agu6  /var/log/welfinity/talend/farmadati/
 
- /opt/welfinity/talend/scripts/farmadati/LoadFarmadatiTableTS026ToMongoDB.sh 217.182.194.167 27017 Product_Dictionaries_Italy TS026 talendUser ba+Req6@agu6  /var/log/welfinity/talend/farmadati/
+ /opt/welfinity/talend/scripts/farmadati/LoadFarmadatiTableTS026ToMongoDB.sh 94.23.179.228 27017 Product_Dictionaries_Italy TS026 talendUser ba+Req6@agu6  /var/log/welfinity/talend/farmadati/
 
 #Tables Clean-up
 echo "$LOG_DATE Tables Clean-up"

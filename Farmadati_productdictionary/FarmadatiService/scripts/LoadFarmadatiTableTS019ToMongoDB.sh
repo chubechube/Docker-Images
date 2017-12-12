@@ -61,7 +61,7 @@ echo "$LOG_DATE parameters : URI : $URI => $1 PORT : $PORT => $2 DATABASE : $DAT
 
 # call the talend job over the new file
 echo "$LOG_DATE Talend Job Starting"
- /opt/welfinity/talend/jobs/farmadati/Farmadati_TS019/Farmadati_TS019/Farmadati_TS019_run.sh --context_param database_url=$1 --context_param database_port=$2 --context_param database=$3 --context_param collection=$4 --context_param user=$5 --context_param password=$6 --context_param logDirectory=$7
+ /opt/welfinity/talend/jobs/farmadati/Farmadati_TS019/Farmadati_TS019/Farmadati_TS019_run.sh --context_param database_uri=$1 --context_param database_port=$2 --context_param database=$3 --context_param collection=$4 --context_param user=$5 --context_param password=$6 --context_param logDirectory=$7
 echo "$LOG_DATE Talend Job Finished"
 
 exit

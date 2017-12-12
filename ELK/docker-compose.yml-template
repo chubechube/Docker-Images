@@ -1,8 +1,22 @@
 version: '2'
+volumes:
+  esdata: {}
 services:
+  Kibana:
+    image: chube/elk_kibana
+    hostname: WelfinityKibana
+    environment:
+      XPACK_MONITORING_ENABLED: 'false'
+    stdin_open: true
+    tty: true
+    ports:
+    - 5601:5601/tcp
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
   ElasticSearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.2
-    hostname: WelfinityElasticSearch
+    hostname: ElasticSearch
     environment:
       ES_JAVA_OPTS: -Xmx1g -Xms1g
       discovery.type: single-node
@@ -10,26 +24,20 @@ services:
     stdin_open: true
     volumes:
     - esdata:/usr/share/elasticsearch/data
-    links:
-    - LogStash:WelfinityLogstash
     tty: true
-    links:
-    - LogStash:WelfinityLogstash
     ports:
     - 9200:9200/tcp
     - 9300:9300/tcp
     labels:
       io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
   LogStash:
     image: chube/elk_logstash
     hostname: WelfinityLogstash
     stdin_open: true
     tty: true
-    links:
-    - ElastiSearch:WelfinityElasticSearch
     ports:
     - 5044:5044/tcp
     labels:
       io.rancher.container.pull_image: always
-volumes:
-  esdata:
+      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"

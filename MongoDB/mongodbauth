@@ -1,3 +1,6 @@
+ssh ressic@94.23.179.228 "echo wW.H277gf | sudo -S docker exec 97ab2c057e57 mongo createUsers.sh"
+
+
 eseguire su container mongo db.createUser({ user: 'Welfinity2017!', pwd: 'sAt5a&rU@aT2', roles: [ { role: "userAdminAnyDatabase", db: "admin" } ] });
 
 

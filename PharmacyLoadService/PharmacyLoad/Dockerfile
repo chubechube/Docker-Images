@@ -28,5 +28,7 @@ ADD lists $PHARMACY_LISTS_DIR
 
 WORKDIR $TALEND_SCRIPT_DIR
 
+RUN echo '24 08 * * *  /opt/welfinity/talend/scripts/pharmacyload/LoadAllPharmacies.sh' > /etc/crontabs/root
 
+CMD crond -l 2 -f
 

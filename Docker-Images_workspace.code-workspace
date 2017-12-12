@@ -4,19 +4,19 @@
 			"path": "WIMService"
 		},
 		{
-			"path": "PharmacyLoadService-DS3"
-		},
-		{
 			"path": "ELK"
 		},
 		{
 			"path": "Farmadati_productdictionary"
 		},
 		{
-			"path": "Farmadati_productdictionary-DS3"
+			"path": "PharmacyLoadService"
 		},
 		{
-			"path": "PharmacyLoadService"
+			"path": "MongoDB"
+		},
+		{
+			"path": "ConfiguratorScript"
 		}
 	],
 	"settings": {}
