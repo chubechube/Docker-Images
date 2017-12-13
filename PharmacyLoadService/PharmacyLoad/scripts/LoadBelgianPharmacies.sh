@@ -12,10 +12,11 @@
 # ---------------
 # database_url		mongodb uri             				- default value :   217.182.194.167
 # database_port		mongodb port           					- default value :	27017
-# database	        mongodb database       					- default value :	Product_Dictionaries_Italy
-# collection	    mongodb collection      				- default value :	TR001
+# database	        mongodb database       					- default value :	PharmacyList
+# collection	    mongodb collection      				- default value :	Belgium
 # user	            mongodb user name       				- default value :	talendUser
 # password	    	mongodb user password   				- default value :	ba+Req6@agu6
+# talendLogDir	    The directory for Talend Job log		- default value :	/var/log/welfinity/talend/pharmacyload
 # TalendLogDir	 The directory for Talend Job log
 
 #Logging setup
@@ -30,7 +31,7 @@ exec 1>>/var/log/welfinity/script/pharmacyload/$FILENAME 2>&1
 
 LOG_DATE=$(date +"%Y-%m-%d %H:%M:%S [Load_Italian_Pharmacies]")
 # checking parameters before anything
-if [ $# != 8 ]; then
+if [ $# != 7 ]; then
 	echo "Welfinity LoadFBelgianPharmacies Job"
 	echo "----------------------------------"
 	echo "Error : Wrong number of parameters"
@@ -42,7 +43,6 @@ if [ $# != 8 ]; then
 	echo "- user            : [String], the mongodb user name for authentication"
 	echo "- password        : [String], the mongodb user password for authentication"
 	echo "- talendLogDir	: [String], The directory for Talend Job log"
-	echo "- list_url	 	: [String], The URL from were dowload the list"
 	echo "Example : ./LoadBelgianPharmacies.sh '94.23.179.229' 27017 Pharmacies_list belgium  talendUser 'ba+Req6@agu6' '/var/log/welfinity/talend/pharmacyload/' https://www.afmps.be/sites/default/files/content/INSP/OFFICINES/lst_pharmacies_pub_extended_20171114.xlsx"
 	exit
 fi
@@ -54,13 +54,13 @@ COLLECTION=$4
 USER=$5
 PASSWORD=$6
 LOGDIR=$7
-LISTURL=$8
 
-echo "$LOG_DATE parameters : URI : $URI => $1 PORT : $PORT => $2 DATABASE : $DATABASE => $3 COLLECTION : $COLLECTION => $4 USER : $USER => $5 PASSWORD : $PASSWORD => $6 LOGDIR : $LOGDIR => $7 $LISTURL=>$8"
+
+echo "$LOG_DATE parameters : URI : $URI => $1 PORT : $PORT => $2 DATABASE : $DATABASE => $3 COLLECTION : $COLLECTION => $4 USER : $USER => $5 PASSWORD : $PASSWORD => $6 LOGDIR : $LOGDIR => $7"
 
 # call the talend job over the new file
 echo "$LOG_DATE Talend Job Starting"
-/opt/welfinity/talend/jobs/pharmacyload/LoadBelgianPharmacyListToMongoDb/LoadBelgianPharmacyListToMongoDb/LoadBelgianPharmacyListToMongoDb_run.sh --context_param database_url=$1 --context_param database_port=$2 --context_param database=$3 --context_param collection=$4 --context_param user=$5 --context_param password=$6 --context_param logDirectory=$7 --list_uri=$8
+/opt/welfinity/talend/jobs/pharmacyload/LoadBelgianPharmacyListToMongoDb/LoadBelgianPharmacyListToMongoDb/LoadBelgianPharmacyListToMongoDb_run.sh --context_param database_url=$1 --context_param database_port=$2 --context_param database=$3 --context_param collection=$4 --context_param user=$5 --context_param password=$6 --context_param logDirectory=$7
 echo "$LOG_DATE Talend Job Finished"
 
 echo "$LOG_DATE Index Creation"
