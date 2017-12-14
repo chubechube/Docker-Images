@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $# -ne 3 ]; then
+if [ $# -ne 4 ]; then
 	echo "Welfinity DeployStackScript "
 	echo "----------------------------------"
 	echo "Error : Wrong number of parameters"
@@ -8,6 +8,7 @@ if [ $# -ne 3 ]; then
 	echo "- source dir : [String], the stack template  dir"
 	echo "- dest dir   : [String], the stack temporary working dir"
     echo "- stack name : [String], the stack name to be used working dir"
+    echo "- environment: [String], the environment to be used"
 	echo "Example : ./deployStackScript ./WIM ./tmpWIM wim-service"
 	exit
 fi
@@ -16,6 +17,7 @@ fi
     SOURCE_DIR=$1
     TEMP_DEST_DIR=$2
     STACK_NAME=$3
+    ENV_TYPE=$4
     DEPLOYSCRIPTDIR="$(dirname $(readlink -f $0))"
 
     
@@ -24,6 +26,7 @@ fi
     echo "TEMP_DEST_DIR =   $2"
     echo "STACK_NAME    =   $3"
     echo "DEPLOYDIR     =   $DEPLOYSCRIPTDIR"
+    echo "ENV_TYPE      =  $4"
 
 #cd source dir and copy all the files to the target directory
 cd $SOURCE_DIR
@@ -33,7 +36,8 @@ cp -r ./ $TEMP_DEST_DIR
 cd $TEMP_DEST_DIR
 
 #Check config file for malicious code
-configfile='deploy.config'
+configfile='deploy.config.'$ENV_TYPE
+echo "USING CONFIG FILE deploy.config.$ENV_TYPE" 
 if [ -f ${configfile} ]; then
     echo "Reading user config...." >&2
 
