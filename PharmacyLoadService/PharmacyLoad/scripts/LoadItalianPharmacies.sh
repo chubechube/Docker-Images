@@ -16,8 +16,8 @@
 # collection	    mongodb collection      				- default value :	TR001
 # user	            mongodb user name       				- default value :	talendUser
 # password	    	mongodb user password   				- default value :	ba+Req6@agu6
-# TalendLogDir	 The directory for Talend Job log
-
+# TalendLogDir	 	The directory for Talend Job log
+# list_url	 		The URL from were dowload the list"
 #Logging setup
 
 NOW=$(date +"%Y_%m_%d")

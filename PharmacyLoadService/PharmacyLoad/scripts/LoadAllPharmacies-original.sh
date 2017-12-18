@@ -5,7 +5,7 @@
 # date : 11/12/2017
 # version : 1.0
 #
-# The aim of this job is to setup the pharmacies lists for the first time
+# The aim of this job is to setup the pharmacies lists for the first time for all the countries
 # 
 # 
 #Logging setup

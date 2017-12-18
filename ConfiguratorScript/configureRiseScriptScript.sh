@@ -12,7 +12,7 @@ if [ $# -ne 5 ]; then
 	echo "- RANCHER_SECRET_KEY   : [String], the rancher secret key".
 	echo "- RANCHER_ENVIRONMENT  : [String], the enviroment where deploy the stacks"
     echo "- STACKDIR             : [String], the stack directory"
-	echo "Example : ./configureRANCHERScript.sh http://94.23.179.226:8080 B9A809E2E4B4740A 8bNu9VZr4zepeVGSDFLR1aRs94wUSNXz ./WIM"
+	echo "Example : ./configureRiseScriptScript.sh http://94.23.179.226:8080 B9A809E2E4B4740A 8bNu9VZr4zepeVGSDFLR1aRs94wUSNXz ./WIM"
 	exit
 fi
 
