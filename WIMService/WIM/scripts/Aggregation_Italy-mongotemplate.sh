@@ -1,0 +1,66 @@
+#!/bin/sh
+# 
+# Welfinity Data Aggregation for Italy
+# Author : Cristiano Ressi di Cervia , Welfinity
+# date : 11/12/2017
+# version : 1.0
+#
+# The aim of this job is to  aggregate data for Italy
+# 
+# 
+#Logging setup
+
+NOW=$(date +"%Y_%m_%d")
+
+FILENAME="$NOW-Aggregation_Italy.log"
+
+exec 3>&1 4>&2
+trap 'exec 2>&4 1>&3' 0 1 2 3
+exec 1>>/var/log/welfinity/script/WIM/$FILENAME 2>&1
+
+LOG_DATE=$(date +"%Y-%m-%d %H:%M:%S [WIM_AGGREGATION_ITALY]")
+
+
+# checking parameters before anything
+if [ $# != 13 ]; then
+	echo "Welfinity Aggregation"
+	echo "----------------------------------"
+	echo "Error : Wrong number of parameters"
+	echo "The script must have the following parameters : "
+    echo "- database_url             : [String], the mongodb address to be used"
+	echo "- database_port            : [String], the mongodb port to be user"
+	echo "- username                 : [String], the mongodb user name for authentication"
+	echo "- password                 : [String], the mongodb user password for authentication" 
+    echo "- database_pharmacies      : [String], the mongodb database to be used".
+	echo "- collection_pharmacies    : [String], the pharmacy collection table name to be used"
+    echo "- database_products        : [String], the coldatabase with the production table extract"
+    echo "- database_farmadati       : [String], the farmadati database   "
+    echo "- sourceDirectory          : [String], the source directory of the file to be processed    " 
+    echo "- destDirectory            : [String], the destination directory of the  processed file   "
+    echo "- sourcefile               : [String], the source fiel to be processed   "
+    echo "- destFile                 : [String], the destination file of the processed file    "
+	echo "- talendLogDir	         : [String], The directory for Talend Job log"
+	echo "Example : ./Aggregation_italy.sh 94.23.179.228 27017 talendUser ba+Req6@agu6 Pharmacies_list Italy markets Product_Dictionaries_Italy /data/aggregate/Italy/toAggregate/ /data/aggregate/Italy/Aggregated/ filetoaggregate.csv aggregated.xls /var/log/welfinity/talend/WIM/"
+	exit
+fi
+
+DATABASE_URL=$1
+DATABASE_PORT=$2
+USERNAME=$3
+PASSWORD=$4
+DATABASE_PHARMACIES=$5
+COLLECTION_PHARMACIES=$6
+DATABASE_PRODUCTS=$7
+DATABASE_FARMADATI=$8
+SOURCE_DIR=$9
+DEST_DIR=$10
+SOURCE_FILE=$11
+DEST_FILE=$12
+LOGDIR=$13
+
+
+echo "$LOG_DATE parameters : DATABASE_URL => $1 DATABASE_PORT => $2 USERNAME => $3 PASSWORD => $4  DATABASE_PHARMACIES => $5 COLLECTION_PHARMACIES => $6 DATABASE_PRODUCTS => $7 DATABASE_FARMADATI => $8 SOURCE_DIRECTORY => $9 DEST_DIRECTORY => $10 SOURCE_FILE => $11 DEST_FILE => $12  $LOGDIR => $13 "
+
+#Process Data
+echo "$LOG_DATE Aggregation Italy"
+/opt/welfinity/talend/jobs/WIM/WIM_Import_Italian_Data_Using_Market/WIM_Import_Italian_Data_Using_Market/WIM_Import_Italian_Data_Using_Market_run.sh --context_param database_url=$1 --context_param database_port=$2 --context_param database_pharmacies=$5  --context_param collection=$6 --context_param user=$3 --context_param password=$4 --context_param logDirectory=$13 --context_param database_products=$7 --context_param database_farmadati=$8 --context_param sourceDirectory=$9 --context_param destDirectory=$10 --context_param sourcefile=$11 --context_param destFile=$12

@@ -1,14 +1,14 @@
 #!/bin/bash
 
-if [ $# -ne 4 ]; then
+if [ $# -ne 4]; then
 	echo "Welfinity DeployStackScript "
 	echo "----------------------------------"
 	echo "Error : Wrong number of parameters"
 	echo "The script must have the following parameters : "
-	echo "- source dir : [String], the stack template  dir"
-	echo "- dest dir   : [String], the stack temporary working dir"
-    echo "- stack name : [String], the stack name to be used working dir"
-    echo "- environment: [String], the environment to be used"
+	echo "- source dir               : [String], the stack template  dir"
+	echo "- dest dir                 : [String], the stack temporary working dir"
+    echo "- stack name               : [String], the stack name to be used working dir"
+    echo "- environment              : [String], the environment to be used"
 	echo "Example : ./deployStackScript ./WIM ./tmpWIM wim-service"
 	exit
 fi
@@ -20,13 +20,15 @@ fi
     ENV_TYPE=$4
     DEPLOYSCRIPTDIR="$(dirname $(readlink -f $0))"
 
+
     
     echo "----> $0 <---"
     echo "SOURCE_DIR    =   $1"
     echo "TEMP_DEST_DIR =   $2"
     echo "STACK_NAME    =   $3"
     echo "DEPLOYDIR     =   $DEPLOYSCRIPTDIR"
-    echo "ENV_TYPE      =  $4"
+    echo "ENV_TYPE      =   $4"
+
 
 #cd source dir and copy all the files to the target directory
 cd $SOURCE_DIR
@@ -57,8 +59,11 @@ echo $RANCHER_URL
 #create configuration file from template file
 $DEPLOYSCRIPTDIR/configureRiseScriptScript.sh $RANCHER_URL $RANCHER_ACCESS_KEY $RANCHER_SECRET_KEY $RANCHER_ENVIRONMENT $TEMP_DEST_DIR
 $DEPLOYSCRIPTDIR/configureFilebeatScript.sh $ELK_STACK $TEMP_DEST_DIR
-$DEPLOYSCRIPTDIR/configureScriptPermission.sh $TEMP_DEST_DIR
 $DEPLOYSCRIPTDIR/configureMongoDb.sh $MONGODB_ADDRESS $MONGODB_PORT $TEMP_DEST_DIR
+
+#Now setting all permissions
+$DEPLOYSCRIPTDIR/configureScriptPermission.sh $TEMP_DEST_DIR
+
 #build and push images
 $DEPLOYSCRIPTDIR/buildandpushImage.sh $TEMP_DEST_DIR
 

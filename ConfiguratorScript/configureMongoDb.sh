@@ -9,7 +9,7 @@ if [ $# -ne 3 ]; then
 	echo "The script must have the following parameters : "
 	echo "- MONGODB_ADDRESS          : [String], the target mongo service URL"
 	echo "- MONGODB_PORT             : [String], the mongo service port"
-    echo "- STACKDIR            : [String], the stack directory"
+    echo "- STACKDIR                 : [String], the stack directory"
 	echo "Welfinity configureMongoDb "
 	echo "Example : ./configureRANCHERScript.sh 94.23.179.228 27017 ./WIM"
 	exit

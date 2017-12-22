@@ -30,14 +30,16 @@ LOG_DATE=$(date +"%Y-%m-%d %H:%M:%S [FARMADATI_GETDATASET_GETRECORDS]")
 
 # checking parameters before anything
 if [ $# != 4 ]; then
-	echo "Welfinity Export and Aggregate Job"
+	echo "Welfinity Download Farmadati Table Job"
 	echo "----------------------------------"
 	echo "Error : Wrong number of parameters"
 	echo "The script must have the following parameters : "
-	echo "- table, the Farmadati table name to be dowloaded "
+	echo "- table			 The Farmadati table name to be dowloaded "
     echo "- username         The Farmadati user username    "
     echo "- password         The Farmadati user password    "
 	echo "- talendLogDir	 The directory for Talend Job log"
+	echo "Example : ./Farmadati_GetDataSet_GetRecords.sh Italy TS026 BDD250591G yqLfFtz9 "
+
 exit
 fi
 

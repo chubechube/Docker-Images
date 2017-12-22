@@ -2,4 +2,6 @@
     RANCHER_ACCESS_KEY=B70C83C00F9CFAFD6E58
     RANCHER_SECRET_KEY=oQrdE48Xn7Ssg5FPbjxrdS14q32WvsW8jBb4XM4b
     RANCHER_ENVIRONMENT=environment_type=monitoring_production
-    ELK_STACK=welfinity-elk 
+    ELK_STACK=welfinity-elk
+    MONGODB_ADDRESS=94.23.179.228
+    MONGODB_PORT=27017

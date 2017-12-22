@@ -26,5 +26,5 @@ mkdir -p /var/log/welfinity/script/pharmacyload/
 
 #Tables dowload from Farmadati SOAP Service 
 echo "$LOG_DATE Tables dowload from Farmadati SOAP Service"
-/opt/welfinity/talend/scripts/pharmacyload/LoadItalianPharmacies.sh {MONGODB_ADDRESS} {MONGODB_PORT} Pharmacies_list italy  talendUser ba+Req6@agu6 /var/log/welfinity/talend/pharmacyload/ http://www.dati.salute.gov.it/imgs/C_17_dataset_5_download_itemDownload0_upFile.CSV
-/opt/welfinity/talend/scripts/pharmacyload/LoadBelgianPharmacies.sh {MONGODB_ADDRESS} {MONGODB_PORT} Pharmacies_list belgium  talendUser  ba+Req6@agu6 /var/log/welfinity/talend/pharmacyload/
+/opt/welfinity/talend/scripts/pharmacyload/LoadItalianPharmacies.sh {MONGODB_ADDRESS} {MONGODB_PORT} Pharmacies_list Italy  talendUser ba+Req6@agu6 /var/log/welfinity/talend/pharmacyload/ http://www.dati.salute.gov.it/imgs/C_17_dataset_5_download_itemDownload0_upFile.CSV
+/opt/welfinity/talend/scripts/pharmacyload/LoadBelgianPharmacies.sh {MONGODB_ADDRESS} {MONGODB_PORT} Pharmacies_list Belgium  talendUser  ba+Req6@agu6 /var/log/welfinity/talend/pharmacyload/
