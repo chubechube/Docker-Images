@@ -60,4 +60,4 @@ echo "$LOG_DATE parameters : DATABASE_URL => $1 DATABASE_PORT => $2 DATABASE_MAR
 
 #Process Data
 echo "$LOG_DATE Aggregation Italy"
-/opt/welfinity/talend/jobs/WIM/Farmadati_Create_Market_Table_TR001/Farmadati_Create_Market_Table_TR001/Farmadati_Create_Market_Table_TR001_run.sh --context_param database_url=$1 --context_param database_port=$2 --context_param database=$3  --context_param collection=$4 --context_param db_user=$5 --context_param db_password=$6 --context_param fm_user=$7 --context_param fm_password=$8 --context_param sourceDirectory=$9  --context_param market=$10 --context_param logDirectory=$11
+/opt/welfinity/talend/jobs/WIM/Farmadati_Create_Market_Table_TR001/Farmadati_Create_Market_Table_TR001/Farmadati_Create_Market_Table_TR001_run.sh --context_param database_url=$1 --context_param database_port=$2 --context_param database_market=$3  --context_param collection_market=$4 --context_param db_user=$5 --context_param db_password=$6 --context_param fm_user=$7 --context_param fm_password=$8 --context_param sourceDirectory=$9  --context_param source_file=$10 --context_param logDirectory=$11
