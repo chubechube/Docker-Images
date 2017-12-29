@@ -1,7 +1,7 @@
 version: '2'
 volumes:
   logcontainer: {}
-  datacontainer: {}
+
 services:
   FileBeat:
     image: chube/filebeatwim:latest
@@ -20,5 +20,5 @@ services:
     tty: true
     volumes:
     - logcontainer:/var/log/welfinity/
-    - datacontainer:/data/
+    - /data:/data/
     stdin_open: true

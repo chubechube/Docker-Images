@@ -16,6 +16,8 @@ USER root
 #Add required date utils
 RUN apk add --update coreutils && rm -rf /var/cache/apk/*
 
+
+
 #Scipt and jobs Copy
 RUN mkdir -p $TALEND_JOB_DIR
 RUN mkdir -p $TALEND_SCRIPT_DIR

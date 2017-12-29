@@ -64,6 +64,8 @@ $DEPLOYSCRIPTDIR/configureMongoDb.sh $MONGODB_ADDRESS $MONGODB_PORT $TEMP_DEST_D
 #Now setting all permissions
 $DEPLOYSCRIPTDIR/configureScriptPermission.sh $TEMP_DEST_DIR
 
+
+
 #build and push images
 $DEPLOYSCRIPTDIR/buildandpushImage.sh $TEMP_DEST_DIR
 
