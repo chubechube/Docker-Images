@@ -1,6 +1,0 @@
-
-filter {
-  grok {
-    match => { "message" => "<JOB-NAME>*\s%{WORD:jobname}\s*(?<job_version>[\s\S]*?)?\s*</JOB-NAME>[\s\S]*?<JOB-DURATION-INFO>\s*(?<job_duration>[\s\S]*?)\s*</JOB-DURATION-INFO>" }
-  }
-}

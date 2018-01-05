@@ -73,4 +73,4 @@ $DEPLOYSCRIPTDIR/buildandpushImage.sh $TEMP_DEST_DIR
 chmod 755 riseScript.sh
 ./riseScript.sh $STACK_NAME
 #clean up
-#rm -rf $TEMP_DEST_DIR
+rm -rf $TEMP_DEST_DIR
