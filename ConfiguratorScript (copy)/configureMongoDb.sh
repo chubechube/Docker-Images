@@ -11,7 +11,7 @@ if [ $# -ne 3 ]; then
 	echo "- MONGODB_PORT             : [String], the mongo service port"
     echo "- STACKDIR                 : [String], the stack directory"
 	echo "Welfinity configureMongoDb "
-	echo "Example : ./configureMongoDb.sh 94.23.179.228 27017 ./WIM"
+	echo "Example : ./configureRANCHERScript.sh 94.23.179.228 27017 ./WIM"
 	exit
 fi
 

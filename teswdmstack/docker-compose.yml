@@ -1,0 +1,24 @@
+version: '2'
+volumes:
+  logcontainer: {}
+
+services:
+  FileBeat:
+    image: chube/filebeatwdm:latest
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: "environment_type=aggregation_production"
+    tty: true
+    volumes:
+    - logcontainer:/var/log/welfinity/
+    stdin_open: true
+  WDMService:
+    image: chube/wdmservice:latest
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: "environment_type=aggregation_production"
+    tty: true
+    volumes:
+    - logcontainer:/var/log/welfinity/
+    - /data:/data/
+    stdin_open: true

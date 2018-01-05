@@ -1,14 +1,14 @@
-#WIM Service image
+#WDM Service image
 FROM openjdk:8-jre-alpine
 
 # File Author / Maintainer
 LABEL maintainer="Cristiano Ressi Di Cervia"
 
 #Evironment Variable
-ENV TALEND_JOB_DIR /opt/welfinity/talend/jobs/WIM/
-ENV TALEND_SCRIPT_DIR /opt/welfinity/scripts/WIM/
-ENV TALEND_LOG_DIR /var/log/welfinity/talend/WIM/
-ENV SCRIPT_LOG_DIR /var/log/welfinity/script/WIM/
+ENV TALEND_JOB_DIR /opt/welfinity/talend/jobs/WDM/
+ENV TALEND_SCRIPT_DIR /opt/welfinity/scripts/WDM/
+ENV TALEND_LOG_DIR /var/log/welfinity/talend/WDM/
+ENV SCRIPT_LOG_DIR /var/log/welfinity/script/WDM/
 ENV TEST_DIR /testdata/
 
 USER root
