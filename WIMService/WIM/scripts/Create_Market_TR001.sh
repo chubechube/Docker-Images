@@ -37,7 +37,7 @@ if [ $# != 11 ]; then
     echo "- fm_username              : [String], the farmadati user name for authentication"
 	echo "- fm_password              : [String], the farmadati user password for authentication" 
     echo "- sourceDirectory          : [String], the source directory of the file to be processed    " 
-    echo "- sourcefile               : [String], the source fiel to be processed   "
+    echo "- sourcefile               : [String], the source file to be processed   "
    	echo "- talendLogDir	         : [String], The directory for Talend Job log"
 	echo "Example : ./Create_Market_TR001.sh 94.23.179.228 27017  markets TR001 talendUser ba+Req6@agu6 BDD250591G yqLfFtz9 /data/aggregate/Italy/market/  market.xlsx /var/log/welfinity/talend/WIM/"
 	exit

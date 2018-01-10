@@ -33,11 +33,11 @@ if [ $# != 13 ]; then
 	echo "- password                 : [String], the mongodb user password for authentication" 
     echo "- database_pharmacies      : [String], the mongodb database to be used".
 	echo "- collection_pharmacies    : [String], the pharmacy collection table name to be used"
-    echo "- database_products        : [String], the coldatabase with the production table extract"
+    echo "- database_products        : [String], the database with the production table extract"
     echo "- database_farmadati       : [String], the farmadati database   "
     echo "- sourceDirectory          : [String], the source directory of the file to be processed    " 
     echo "- destDirectory            : [String], the destination directory of the  processed file   "
-    echo "- sourcefile               : [String], the source fiel to be processed   "
+    echo "- sourcefile               : [String], the source file to be processed   "
     echo "- destFile                 : [String], the destination file of the processed file    "
 	echo "- talendLogDir	         : [String], The directory for Talend Job log"
 	echo "Example : ./Aggregation_Italy.sh 94.23.179.228 27017 talendUser ba+Req6@agu6 Pharmacies_list Italy markets Product_Dictionaries_Italy /data/aggregate/Italy/toAggregate/ /data/aggregate/Italy/Aggregated/ filetoaggregate.csv aggregated.xls /var/log/welfinity/talend/WDM/"
