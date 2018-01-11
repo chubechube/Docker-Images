@@ -16,7 +16,9 @@ USER root
 #Add required date utils
 RUN apk add --update coreutils && rm -rf /var/cache/apk/*
 
-
+#SSH Section
+RUN apk add --update openssh   && rm -rf /var/cache/apk/*
+RUN apk add --update sshpass   && rm -rf /var/cache/apk/*
 
 #Scipt and jobs Copy
 RUN mkdir -p $TALEND_JOB_DIR
