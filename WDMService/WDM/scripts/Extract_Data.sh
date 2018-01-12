@@ -1,8 +1,8 @@
 #!/bin/sh
 # 
 # Welfinity Export and Aggregate Job
-# Author : Elias Ohayon, Sailendra
-# date : 30/08/2017
+# Author : Cristiano Ressi di Cervia
+# date : 10/01/2018
 # version : 1.0
 #
 # The aim of this job is to export data from Replica's Elastic Search and copy it to a shared forlder at Welfinity aggregation service WIM
@@ -22,11 +22,21 @@
 # - wimDest , the WIM service  destination folder
 # - nodi_host 	, the nodi replica host address i.e 94.23.179.225
 # - nodi_user 	, the nodi user i.e  nodiuser
+#Logging setup
 
+NOW=$(date +"%Y_%m_%d")
+
+FILENAME="$NOW-Extract_Data.log"
+
+exec 3>&1 4>&2
+trap 'exec 2>&4 1>&3' 0 1 2 3
+exec 1>>/var/log/welfinity/script/WDM/$FILENAME 2>&1
+
+LOG_DATE=$(date +"%Y-%m-%d %H:%M:%S [WDM_EXTRACTION_ITALY]")
 
 # checking parameters before anything
 if [ $# != 9 ]; then
-	echo "Welfinity Export and Aggregate Job"
+	echo "Welfinity Export Job"
 	echo "----------------------------------"
 	echo "Error : Wrong number of parameters"
 	echo "The script must have the following parameters : "
@@ -39,7 +49,7 @@ if [ $# != 9 ]; then
 	echo "- wimDest 	: [String], a destination folder, with format username@host:directory  'ressic@94.23.179.229:/data'"
 	echo "- nodi_host 	: [String], the nodi replica host address i.e 94.23.179.225 "
 	echo "- nodi_user 	: [String], the nodi user i.e  nodiuser "
-	echo "Example 	: ./Export_and_Aggregate.sh csf productID 2345,2305,95894 transactionTimestamp 09/08/2009 12/09/2011 ressic@94.23.179.229:/data 94.23.179.225 nodiuser"
+	echo "Example 		: ./Extract_Data.sh csf productID 31111026,25369048,12745220 transactionTimestamp 09/08/2009 12/09/2011 ressic@94.23.179.229:/data/Italy/toAggregate 94.23.179.225 nodiuser"
 	exit
 fi
 

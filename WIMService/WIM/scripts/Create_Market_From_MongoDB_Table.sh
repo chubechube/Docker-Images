@@ -22,7 +22,7 @@ LOG_DATE=$(date +"%Y-%m-%d %H:%M:%S [WIM_Create_Market_TR001]")
 
 
 # checking parameters before anything
-if [ $# != 12 ]; then
+if [ $# != 15 ]; then
 
     echo "Welfinity Aggregation"
 	echo "----------------------------------"
@@ -40,7 +40,10 @@ if [ $# != 12 ]; then
 	echo "- collection_source        : [String], the mongodb source collection to be used"
 	echo "- querykey                 : [String], the key to be used for query"
    	echo "- talendLogDir	         : [String], The directory for Talend Job log"
-	echo "Example : ./Create_Market_From_MongoDB_Table.sh 94.23.179.229 27017  markets TR017 talendUser ba+Req6@agu6  /data/aggregate/Italy/market/  market.xlsx  Product_Dictionaries_Italy TR017 FDI_T139 /var/log/welfinity/talend/WIM/"
+	echo "- indexKey	           	 : [String], The index key to be used if an index is required"
+	echo "- uniqueIndex	    		 : [String], The index is unique 0 = no,  1 = yes"
+	echo "- createIndex	         	 : [String], Create an Index 0 = no , 1 = yes"
+	echo "Example : ./Create_Market_From_MongoDB_Table.sh 94.23.179.229 27017  markets TR017 talendUser ba+Req6@agu6  /data/aggregate/Italy/market/  market.xlsx  Product_Dictionaries_Italy TR017 FDI_T139 /var/log/welfinity/talend/WIM/ FDI_T139 1 1"
 	exit
 fi
 
@@ -56,10 +59,14 @@ DB_SOURCE=$9
 COLLECTION_SOURCE=$10
 QUERY_KEY=$11
 LOGDIR=$12
+INDEX_KEY=$13
+UNIQUE_INDEX=$14
+CREATE_INDEX=$15
 
 
-echo "$LOG_DATE parameters : DATABASE_URL => $1 DATABASE_PORT => $2 DATABASE_MARKET => $3 COLLECTION_MARKET => $4 DB_USERNAME => $5 DB_PASSWORD => $6 SOURCE_DIRECTORY => $7 SOURCE_FILE => $8 DB_SOURCE => $9 	COLLECTION_SOURCE=>$10  QUERY_KEY=$11 LOGDIR => $12 "
+echo "$LOG_DATE parameters : DATABASE_URL => $1 DATABASE_PORT => $2 DATABASE_MARKET => $3 COLLECTION_MARKET => $4 DB_USERNAME => $5 DB_PASSWORD => $6 SOURCE_DIRECTORY => $7 SOURCE_FILE => $8 DB_SOURCE => $9 	COLLECTION_SOURCE=>$10  QUERY_KEY=$11 LOGDIR => $12 UNIQUE_INDEX => $14 CREATE_INDEX = $15"
 
 #Process Data
-echo "$LOG_DATE Create Market From MongoD Table"
-/opt/welfinity/talend/jobs/WIM/Create_Market_Table_From_MongoDB/Create_Market_Table_From_MongoDB/Create_Market_Table_From_MongoDB_run.sh --context_param database_url=$1 --context_param database_port=$2 --context_param database_market=$3  --context_param collection_market=$4 --context_param db_user=$5 --context_param db_password=$6  --context_param sourceDirectory=$7  --context_param source_file=$8 --context_param database_source=$9 --context_param collection_source=$10 --context_param querykey=$11	--context_param logDirectory=$12
+echo "$LOG_DATE Start Create Market From MongoD Table"
+/opt/welfinity/talend/jobs/WIM/Create_Market_Table_From_MongoDB/Create_Market_Table_From_MongoDB/Create_Market_Table_From_MongoDB_run.sh --context_param database_url=$1 --context_param database_port=$2 --context_param database_market=$3  --context_param collection_market=$4 --context_param db_user=$5 --context_param db_password=$6  --context_param sourceDirectory=$7  --context_param source_file=$8 --context_param database_source=$9 --context_param collection_source=$10 --context_param querykey=$11	--context_param logDirectory=$12 --context_param indexKey=$13 --context_param uniqueIndes=$14 --context_param createIndex=$15
+echo "$LOG_DATE End Create Market From MongoD Table"
