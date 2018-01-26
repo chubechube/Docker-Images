@@ -20,6 +20,9 @@
 		},
 		{
 			"path": "WDMService"
+		},
+		{
+			"path": "/home/cristisno/Sviluppo/Welfinity/Progetti-Bitbucket/UnixScripts/weaj"
 		}
 	],
 	"settings": {}

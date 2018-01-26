@@ -42,7 +42,7 @@ if [ $# != 22 ]; then
     echo "- destFile                 : [String], the destination file of the processed file    "
 	echo "- talendLogDir	         : [String], The directory for Talend Job log"
 
-	echo "- rule 		             : [String], as of replica's rule. It refers to the definition of a import, and also to an index in Elastic Search"
+	echo "- document	             : [String], as of replica's document. It refers to the definition of a import, and also to an index in Elastic Search"
 	echo "- filterField              : [String], the field on which a filter will be applied"
 	echo "- filterValue              : [String], the string value that will be used to filter. Note that if the string contains a comma, then the filter will act as 'true if field contains one of the filter values'".
 	echo "- dateField            	 : [String], the field on which date comparison can be made"
@@ -51,7 +51,7 @@ if [ $# != 22 ]; then
 	echo "- wimDest 	             : [String], a destination folder, with format username@host:directory  'ressic@94.23.179.229:/data'"
 	echo "- nodi_host 	             : [String], the nodi replica host address i.e 94.23.179.225 "
 	echo "- nodi_user 	             : [String], the nodi user i.e  nodiuser "
-	echo "Example : ./Extract_and_Aggregate_Italy.sh 94.23.179.228 27017 talendUser ba+Req6@agu6 Pharmacies_list Italy markets Product_Dictionaries_Italy /data/Italy/toAggregate/ /data/Italy/Aggregated/ filetoaggregate.csv aggregated.xls /var/log/welfinity/talend/WDM/  csf productID 31111026,25369048,12745220 transactionTimestamp 09/08/2009 12/09/2011 ressic@94.23.179.229:/data/Italy/toAggregate 94.23.179.225 nodiuser"
+	echo "Example : ./Extract_and_Aggregate_Italy.sh 94.23.179.228 27017 talendUser ba+Req6@agu6 Pharmacies_list Italy markets Product_Dictionaries_Italy /data/aggregate/Italy/toAggregate/ /data/aggregate/Italy/Aggregated/ filetoaggregate.csv aggregated.xls /var/log/welfinity/talend/WDM/  italy_prp Product_ID '027546023,025369048,908924412' Transaction_Timestamp 01/01/2015 31/12/2017 'ressic@94.23.179.228:/data/Italy/toAggregate' 94.23.179.225 nodiuser"
 	exit
 fi
 
@@ -70,7 +70,7 @@ DEST_DIR=$10
 SOURCE_FILE=$11
 DEST_FILE=$12
 LOGDIR=$13
-RULE=$14
+DOCUMENT=$14
 FILTER_FIELD=$15
 FILTER_VALUE=$16
 DATE_FIELD=$17
@@ -82,7 +82,8 @@ NODI_USER=$22
 
 
 echo "parameters : "
-echo "RULE : $RULE => $14"
+
+echo "DOCUMENT : $DOCUMENT => $14"
 echo "FILTER_FIELD : $FILTER_FIELD => $15"
 echo "FILTER_VALUE : $FILTER_VALUE => $16"
 echo "DATE_FIELD : $DATE_FIELD => $17"
@@ -95,8 +96,8 @@ echo "NODI_USER : $NODI_USER => $22"
 echo "$LOG_DATE parameters : DATABASE_URL => $1 DATABASE_PORT => $2 USERNAME => $3 PASSWORD => $4  DATABASE_PHARMACIES => $5 COLLECTION_PHARMACIES => $6 DATABASE_PRODUCTS => $7 DATABASE_FARMADATI => $8 SOURCE_DIRECTORY => $9 DEST_DIRECTORY => $10 SOURCE_FILE => $11 DEST_FILE => $12  $LOGDIR => $13 "
 
 
-echo "Extracting Data => $RULE  $FILTER_FIELD $FILTER_VALUE  $DATE_FIELD $PERIOD_START $PERIOD_END $WIM_DEST $NODI_HOST $NODI_USER "
-./Extract_Data.sh $RULE  $FILTER_FIELD $FILTER_VALUE  $DATE_FIELD $PERIOD_START $PERIOD_END $WIM_DEST $NODI_HOST $NODI_USER
+echo "Extracting Data => $DOCUMENT  $FILTER_FIELD $FILTER_VALUE  $DATE_FIELD $PERIOD_START $PERIOD_END $WIM_DEST $NODI_HOST $NODI_USER "
+./Extract_Data.sh $DOCUMENT  $FILTER_FIELD $FILTER_VALUE  $DATE_FIELD $PERIOD_START $PERIOD_END $WIM_DEST $NODI_HOST $NODI_USER
 echo "Data Extracted"
 
 
