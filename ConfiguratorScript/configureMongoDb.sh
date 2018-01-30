@@ -34,12 +34,9 @@ fi
     shopt -s globstar
 
 
-for i in **/*mongotemplate; do 
+for i in **/*+template; do 
     echo "Processing $i"
-    NEWFILENAME="$(echo $i |cut  -d'-' -f1,1)".sh
-    echo "New Filename $NEWFILENAME"
-    cp "./"/$i "."/$NEWFILENAME
-    sed -i -e "s/{MONGODB_ADDRESS}/$MONGODB_ADDRESS/g" ./$NEWFILENAME
-    sed -i -e "s/{MONGODB_PORT}/$MONGODB_PORT/g" ./$NEWFILENAME
-    rm $i
+    cp "./"/$i "."/$i
+    sed -i -e "s/{MONGODB_ADDRESS}/$MONGODB_ADDRESS/g" ./$i
+    sed -i -e "s/{MONGODB_PORT}/$MONGODB_PORT/g" ./$i
 done

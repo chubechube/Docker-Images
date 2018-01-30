@@ -38,20 +38,14 @@ fi
     shopt -s nullglob
     shopt -s globstar
 
-for i in **/*riseScript.sh-template; do 
+for i in **/*riseScript.sh+template; do 
     echo "Processing $i"
-    NEWFILENAME="$(echo $i |cut  -d'-' -f1)"
-    echo "New Filename $NEWFILENAME"
-    cp "./"/$i "."/$NEWFILENAME
-    sed -i -e "s,{RANCHER_URL},$RANCHER_URL,g" ./$NEWFILENAME
-    sed -i -e "s/{RANCHER_ACCESS_KEY}/$RANCHER_ACCESS_KEY/g" ./$NEWFILENAME
-    sed -i -e "s/{RANCHER_SECRET_KEY}/$RANCHER_SECRET_KEY/g" ./$NEWFILENAME
+    sed -i -e "s,{RANCHER_URL},$RANCHER_URL,g" ./$i
+    sed -i -e "s/{RANCHER_ACCESS_KEY}/$RANCHER_ACCESS_KEY/g" ./$i
+    sed -i -e "s/{RANCHER_SECRET_KEY}/$RANCHER_SECRET_KEY/g" ./$i
 done
 
-for i in **/*docker-compose.yml-template; do 
+for i in **/*docker-compose.yml+template; do 
     echo "Processing $i"
-    NEWFILENAME="$(echo $i |cut  -d'-' -f1,2)"
-    echo "New Filename $NEWFILENAME"
-    cp "./"/$i "."/$NEWFILENAME
-    sed -i -e "s/{RANCHER_ENVIRONMENT}/$RANCHER_ENVIRONMENT/g" ./$NEWFILENAME
+    sed -i -e "s/{RANCHER_ENVIRONMENT}/$RANCHER_ENVIRONMENT/g" ./$i
 done

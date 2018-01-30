@@ -29,7 +29,7 @@ ADD scripts $TALEND_SCRIPT_DIR
 WORKDIR $TALEND_SCRIPT_DIR
 
 
-RUN echo '30 08 * * *  /opt/welfinity/talend/scripts/farmadati/Farmadati_LoadAllTables.sh' > /etc/crontabs/root
+RUN echo '30 05 * * *  /opt/welfinity/talend/scripts/farmadati/Farmadati_LoadAllTables.sh' > /etc/crontabs/root
 
 CMD crond -l 2 -f
 

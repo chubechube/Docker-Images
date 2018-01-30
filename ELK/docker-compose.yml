@@ -14,6 +14,17 @@ services:
     labels:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
+
+  Kibana_tool:
+    image: chube/kibana_tool
+    hostname: KibanaTool
+    environment:
+      XPACK_MONITORING_ENABLED: 'false'
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
   ElasticSearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.2
     hostname: ElasticSearch

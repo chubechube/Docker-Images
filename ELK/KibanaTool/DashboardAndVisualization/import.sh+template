@@ -1,0 +1,2 @@
+elasticdump --input=kibana_index_mapping.json --output=http://elasticsearch.{ELK-STAK}9200/.kibana    --type=mapping
+elasticdump --input=kibana_index_data.json    --output=http://elasticsearch.{ELK-STAK}9200/.kibana     --type=data

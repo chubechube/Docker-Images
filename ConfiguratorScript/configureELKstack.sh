@@ -27,10 +27,7 @@ fi
 # cd to dest dir
     cd $STACKDIR
 # processing all files in the dest dir
-for i in **/*filebeat.yml-template; do 
+for i in **/*+template; do 
     echo "Processing $i"
-    NEWFILENAME="$(echo $i |cut  -d'-' -f1)"
-    echo "New Filename $NEWFILENAME"
-    cp "./"/$i "."/$NEWFILENAME
-    sed -i -e "s/{ELK-STAK}/$ELKSTACK/g" ./$NEWFILENAME
+    sed -i -e "s/{ELK-STAK}/$ELKSTACK/g" ./$i
 done

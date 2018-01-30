@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ $# -ne 4]; then
+if [ $# -ne 4 ]; then
 	echo "Welfinity DeployStackScript "
 	echo "----------------------------------"
 	echo "Error : Wrong number of parameters"
@@ -31,6 +31,15 @@ fi
 
 
 #cd source dir and copy all the files to the target directory
+
+blackonwhit='\e[04;30;47m' 
+redonwhit='\e[04;31;47m'
+whiteonblue='\e[0;37;44m'
+endColor='\e[0m'
+
+
+echo -e " ${blackonwhit}  Deploy $3  in ${redonwhit} $4 ${endColor} "
+
 cd $SOURCE_DIR
 cp -r ./ $TEMP_DEST_DIR
 
@@ -55,22 +64,44 @@ else
     echo "There is no configuration file call ${configfile}"
 fi
 
-echo $RANCHER_URL
-#create configuration file from template file
+
+
+#replace values in template files
+echo -e "${whiteonblue} Configuring Rise script  ${endColor} "
 $DEPLOYSCRIPTDIR/configureRiseScriptScript.sh $RANCHER_URL $RANCHER_ACCESS_KEY $RANCHER_SECRET_KEY $RANCHER_ENVIRONMENT $TEMP_DEST_DIR
-$DEPLOYSCRIPTDIR/configureFilebeatScript.sh $ELK_STACK $TEMP_DEST_DIR
+echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor} \n  "
+
+echo -e "${whiteonblue} Configuring ELK Stack  ${endColor} "
+$DEPLOYSCRIPTDIR/configureELKstack.sh $ELK_STACK $TEMP_DEST_DIR
+echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor} \n "
+
+echo -e "${whiteonblue} Configuring MongoDB  ${endColor} "
 $DEPLOYSCRIPTDIR/configureMongoDb.sh $MONGODB_ADDRESS $MONGODB_PORT $TEMP_DEST_DIR
+echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor}  \n "
+
+
+#create live files from template files
+echo -e "${whiteonblue} Generating file from templates  ${endColor} "
+$DEPLOYSCRIPTDIR/renametemplatefiles.sh $TEMP_DEST_DIR
+echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor} \n  "
 
 #Now setting all permissions
+echo -e "${whiteonblue} Setting file permissions  ${endColor} "
 $DEPLOYSCRIPTDIR/configureScriptPermission.sh $TEMP_DEST_DIR
-
-
+echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor}  \n  "
 
 #build and push images
+echo -e "${whiteonblue} Building and Pushing Images  ${endColor} "
 $DEPLOYSCRIPTDIR/buildandpushImage.sh $TEMP_DEST_DIR
+echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor} \n  "
 
 #run rancher-compose 
+echo -e "${whiteonblue} Deploy stack using rancher  ${endColor} "
 chmod 755 riseScript.sh
 ./riseScript.sh $STACK_NAME
+echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor} \n  "
+
 #clean up
+echo -e "${whiteonblue} CLean up  ${endColor} "
 rm -rf $TEMP_DEST_DIR
+echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor}  \n "
