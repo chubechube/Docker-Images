@@ -30,4 +30,5 @@ fi
 for i in **/*+template; do 
     echo "Processing $i"
     sed -i -e "s/{ELK-STAK}/$ELKSTACK/g" ./$i
+    echo "----> New Filename $NEWFILENAME <----"
 done

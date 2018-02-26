@@ -1,5 +1,5 @@
 #!/bin/bash
-
+shopt -s extglob
 if [ $# -ne 4 ]; then
 	echo "Welfinity DeployStackScript "
 	echo "----------------------------------"
@@ -41,8 +41,8 @@ endColor='\e[0m'
 echo -e " ${blackonwhit}  Deploy $3  in ${redonwhit} $4 ${endColor} "
 
 cd $SOURCE_DIR
-cp -r ./ $TEMP_DEST_DIR
-
+#cp -r !(node_modules/*) ./ $TEMP_DEST_DIR
+rsync -a --progress ./ $TEMP_DEST_DIR --exclude-from 'welfinity-exclude.txt'
 #Cd to the temp dir and config variable import
 cd $TEMP_DEST_DIR
 

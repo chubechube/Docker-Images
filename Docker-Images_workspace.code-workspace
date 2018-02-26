@@ -26,7 +26,12 @@
 		},
 		{
 			"path": "WITTJService"
+		},
+		{
+			"path": "/home/cristisno/Sviluppo/Welfinity/Progetti_locali/NodeJSPRojects"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
 }

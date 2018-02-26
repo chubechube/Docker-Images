@@ -1,4 +1,3 @@
-
 #!/bin/sh
 # 
 # Welfinity Data Aggregation for Italy

@@ -1,6 +1,8 @@
 #!/bin/bash
 # Usage: create file from template and replace  MOGNODB connection deatails
 # 
+shopt -s globstar
+shopt -s dotglob
 
 if [ $# -ne 3 ]; then
 	echo "Welfinity configureMongoDb "
@@ -36,7 +38,6 @@ fi
 
 for i in **/*+template; do 
     echo "Processing $i"
-    cp "./"/$i "."/$i
     sed -i -e "s/{MONGODB_ADDRESS}/$MONGODB_ADDRESS/g" ./$i
     sed -i -e "s/{MONGODB_PORT}/$MONGODB_PORT/g" ./$i
 done

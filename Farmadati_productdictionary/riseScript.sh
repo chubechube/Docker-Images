@@ -15,6 +15,6 @@ fi
     echo "STACK_NAME    =   $1"
 
 #Build stack
-rancher-compose  --url {RANCHER_URL} --access-key {RANCHER_ACCESS_KEY} --secret-key {RANCHER_SECRET_KEY} -p $1 up -d
+rancher-compose  --url http://94.23.179.226:8080 --access-key B70C83C00F9CFAFD6E58 --secret-key oQrdE48Xn7Ssg5FPbjxrdS14q32WvsW8jBb4XM4b -p $1 up -d
 
 

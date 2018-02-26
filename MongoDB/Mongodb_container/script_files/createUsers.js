@@ -16,6 +16,8 @@ db.createUser(  {    user: "talendUser",    pwd: "ba+Req6@agu6",    roles: [{ ro
 
 db = db.getSiblingDB('Product_Dictionaries_Italy');
 db.createUser(  {    user: "talendUser",    pwd: "ba+Req6@agu6",    roles: [{ role: "readWrite", db: "Product_Dictionaries_Italy" }    ]  });
+db.createUser(  {    user: "webuser",       pwd: "3ZNnw5T6pWAgeUXx",    roles: [ { role: "readWrite", db: "Product_Dictionaries_Italy" } ]});
 
 db = db.getSiblingDB('markets');
 db.createUser(  {    user: "talendUser",    pwd: "ba+Req6@agu6",    roles: [ { role: "readWrite", db: "markets" }    ]  });
+db.createUser(  {    user: "webuser",       pwd: "3ZNnw5T6pWAgeUXx",    roles: [ { role: "readWrite", db: "markets" }    ]  });

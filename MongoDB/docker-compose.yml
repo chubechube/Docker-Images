@@ -9,7 +9,7 @@ services:
     - 27017:27017/tcp
     labels:
       io.rancher.container.pull_image: always
-      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
+      io.rancher.scheduler.affinity:host_label: "environment_type=aggregation_production"
     command:
     - mongod
     - --auth

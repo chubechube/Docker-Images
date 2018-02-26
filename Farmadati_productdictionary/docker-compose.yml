@@ -9,7 +9,7 @@ services:
     - logcontainer:/var/log/welfinity/
     labels:
       io.rancher.container.pull_image: always
-      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
+      io.rancher.scheduler.affinity:host_label: "environment_type=aggregation_production"
     tty: true
     stdin_open: true
   FarmadatiTalendJobs:
@@ -18,7 +18,7 @@ services:
     - logcontainer:/var/log/welfinity/
     labels:
       io.rancher.container.pull_image: always
-      io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
+      io.rancher.scheduler.affinity:host_label: "environment_type=aggregation_production"
     tty: true
     stdin_open: true
 
