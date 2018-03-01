@@ -1,0 +1,18 @@
+#!/bin/bash
+if [ $# -ne 1 ]; then
+	echo "Welfinity riseScript "
+	echo "----------------------------------"
+	echo "Error : Wrong number of parameters"
+	echo "The script must have the following parameters : "
+    echo "- stack name : [String], the stack name to be used working dir"
+	echo "Example : ./deployStackScript wim-service"
+	exit
+fi
+
+
+    STACK_NAME=$1
+    echo "----> $0 <---"
+    echo "STACK_NAME    =   $1"
+
+#Build stack
+rancher-comporancher-compose  --url {RANCHER_URL} --access-key {RANCHER_ACCESS_KEY} --secret-key {RANCHER_SECRET_KEY} -p $1 up -d

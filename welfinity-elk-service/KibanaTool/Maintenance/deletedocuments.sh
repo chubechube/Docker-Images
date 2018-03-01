@@ -1,0 +1,1 @@
+node /opt/welfinity/Kibana/deletedocuments.js

@@ -1,34 +1,34 @@
 {
 	"folders": [
 		{
-			"path": "WIMService"
-		},
-		{
-			"path": "ELK"
-		},
-		{
-			"path": "Farmadati_productdictionary"
-		},
-		{
-			"path": "PharmacyLoadService"
-		},
-		{
-			"path": "MongoDB"
-		},
-		{
 			"path": "ConfiguratorScript"
-		},
-		{
-			"path": "WDMService"
 		},
 		{
 			"path": "/home/cristisno/Sviluppo/Welfinity/Progetti-Bitbucket/UnixScripts/weaj"
 		},
 		{
-			"path": "WITTJService"
+			"path": "/home/cristisno/Sviluppo/Welfinity/Progetti_locali/NodeJSPRojects"
 		},
 		{
-			"path": "/home/cristisno/Sviluppo/Welfinity/Progetti_locali/NodeJSPRojects"
+			"path": "welfinity-wim-market-service"
+		},
+		{
+			"path": "welfinity-wim-pharmacy-load-service"
+		},
+		{
+			"path": "welfinity-mongodb-service"
+		},
+		{
+			"path": "welfinity-elk-service"
+		},
+		{
+			"path": "welfinity-farmadati-service"
+		},
+		{
+			"path": "welfinity-wdm-service"
+		},
+		{
+			"path": "welfinity-wittj-service"
 		}
 	],
 	"settings": {

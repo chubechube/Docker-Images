@@ -1,6 +1,6 @@
 #!/bin/bash
 shopt -s extglob
-if [ $# -ne 4 ]; then
+if [ $# -ne 5 ]; then
 	echo "Welfinity DeployStackScript "
 	echo "----------------------------------"
 	echo "Error : Wrong number of parameters"
@@ -9,6 +9,7 @@ if [ $# -ne 4 ]; then
 	echo "- dest dir                 : [String], the stack temporary working dir"
     echo "- stack name               : [String], the stack name to be used working dir"
     echo "- environment              : [String], the environment to be used"
+    echo "- deploy                   : [String], 0 deploy the stak , 1 don't deploy the stack"
 	echo "Example : ./deployStackScript ./WIM ./tmpWIM wim-service"
 	exit
 fi
@@ -18,7 +19,9 @@ fi
     TEMP_DEST_DIR=$2
     STACK_NAME=$3
     ENV_TYPE=$4
+    PUSH=$5
     DEPLOYSCRIPTDIR="$(dirname $(readlink -f $0))"
+    EXCLUDE_FILE="welfinity-exclude.txt"
 
 
     
@@ -28,6 +31,7 @@ fi
     echo "STACK_NAME    =   $3"
     echo "DEPLOYDIR     =   $DEPLOYSCRIPTDIR"
     echo "ENV_TYPE      =   $4"
+    echo "PUSH          =   $5"
 
 
 #cd source dir and copy all the files to the target directory
@@ -41,8 +45,16 @@ endColor='\e[0m'
 echo -e " ${blackonwhit}  Deploy $3  in ${redonwhit} $4 ${endColor} "
 
 cd $SOURCE_DIR
-#cp -r !(node_modules/*) ./ $TEMP_DEST_DIR
-rsync -a --progress ./ $TEMP_DEST_DIR --exclude-from 'welfinity-exclude.txt'
+mkdir $TEMP_DEST_DIR
+
+if [ -f "$EXCLUDE_FILE" ]
+then
+    rsync -a --progress ./ $TEMP_DEST_DIR --exclude-from $EXCLUDE_FILE
+else
+	rsync -a --progress ./ $TEMP_DEST_DIR 
+fi
+
+
 #Cd to the temp dir and config variable import
 cd $TEMP_DEST_DIR
 
@@ -90,10 +102,14 @@ echo -e "${whiteonblue} Setting file permissions  ${endColor} "
 $DEPLOYSCRIPTDIR/configureScriptPermission.sh $TEMP_DEST_DIR
 echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor}  \n  "
 
+if [ "$5" == "0" ]
+then
+
 #build and push images
 echo -e "${whiteonblue} Building and Pushing Images  ${endColor} "
 $DEPLOYSCRIPTDIR/buildandpushImage.sh $TEMP_DEST_DIR
 echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor} \n  "
+
 
 #run rancher-compose 
 echo -e "${whiteonblue} Deploy stack using rancher  ${endColor} "
@@ -105,3 +121,4 @@ echo -e "${whiteonblue} --------------------------------------------------------
 echo -e "${whiteonblue} CLean up  ${endColor} "
 rm -rf $TEMP_DEST_DIR
 echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor}  \n "
+fi
