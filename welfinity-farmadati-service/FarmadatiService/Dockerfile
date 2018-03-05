@@ -10,6 +10,7 @@ ENV TALEND_SCRIPT_DIR /opt/welfinity/talend/scripts/farmadati/
 ENV TABLE_DIR /data/Farmadati/Tables/
 ENV TALEND_LOG_DIR /var/log/welfinity/talend/farmadati/
 ENV SCRIPT_LOG_DIR /var/log/welfinity/script/farmadati/
+ENV MAINTENANCE_DIR /opt/welfinity/maintenance/
 
 USER root
 
@@ -17,6 +18,7 @@ USER root
 RUN apk add --update coreutils && rm -rf /var/cache/apk/*
 
 #Scipt and jobs Copy
+RUN mkdir -p MAINTENANCE_DIR
 RUN mkdir -p $TALEND_JOB_DIR
 RUN mkdir -p $TALEND_SCRIPT_DIR
 RUN mkdir -p $TABLE_DIR
@@ -25,12 +27,12 @@ RUN mkdir -p $SCRIPT_LOG_DIR
 
 ADD jobs $TALEND_JOB_DIR
 ADD scripts $TALEND_SCRIPT_DIR
+ADD maintenance $MAINTENANCE_DIR
 
 WORKDIR $TALEND_SCRIPT_DIR
 
-RUN echo '0 1 1 * * rm ${TALEND_LOG_DIR}*.*' > /etc/crontabs/root
-RUN echo '0 1 1 * * rm ${SCRIPT_LOG_DIR}*.*' > /etc/crontabs/root
-RUN echo '30 05 * * *  /opt/welfinity/talend/scripts/farmadati/Farmadati_LoadAllTables.sh' > /etc/crontabs/root
+RUN echo '0 1 1 * * /opt/welfinity/maintenance/cleanLog.sh' >> /etc/crontabs/root
+RUN echo '30 05 * * *  /opt/welfinity/talend/scripts/farmadati/Farmadati_LoadAllTables.sh' >> /etc/crontabs/root
 
 CMD crond -l 2 -f
 
