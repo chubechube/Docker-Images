@@ -9,7 +9,7 @@ if [ $# -ne 5 ]; then
 	echo "- dest dir                 : [String], the stack temporary working dir"
     echo "- stack name               : [String], the stack name to be used working dir"
     echo "- environment              : [String], the environment to be used"
-    echo "- deploy                   : [String], 0 deploy the stak , 1 don't deploy the stack"
+    echo "- deploy                   : [String], 0 deploy the stak , 1 don't deploy the stack ,2 just update the images"
 	echo "Example : ./deployStackScript ./WIM ./tmpWIM wim-service"
 	exit
 fi
@@ -116,6 +116,21 @@ echo -e "${whiteonblue} Deploy stack using rancher  ${endColor} "
 chmod 755 riseScript.sh
 ./riseScript.sh $STACK_NAME
 echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor} \n  "
+
+#clean up
+echo -e "${whiteonblue} CLean up  ${endColor} "
+rm -rf $TEMP_DEST_DIR
+echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor}  \n "
+fi
+
+if [ "$5" == "2" ]
+then
+
+#build and push images
+echo -e "${whiteonblue} Building and Pushing Images  ${endColor} "
+$DEPLOYSCRIPTDIR/buildandpushImage.sh $TEMP_DEST_DIR
+echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor} \n  "
+
 
 #clean up
 echo -e "${whiteonblue} CLean up  ${endColor} "

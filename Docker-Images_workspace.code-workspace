@@ -7,9 +7,6 @@
 			"path": "/home/cristisno/Sviluppo/Welfinity/Progetti-Bitbucket/UnixScripts/weaj"
 		},
 		{
-			"path": "/home/cristisno/Sviluppo/Welfinity/Progetti_locali/NodeJSPRojects"
-		},
-		{
 			"path": "welfinity-wim-market-service"
 		},
 		{
@@ -29,6 +26,9 @@
 		},
 		{
 			"path": "welfinity-wittj-service"
+		},
+		{
+			"path": "/home/cristisno/Sviluppo/Welfinity/Progetti_locali/Welfinity-Web-Portal"
 		}
 	],
 	"settings": {
