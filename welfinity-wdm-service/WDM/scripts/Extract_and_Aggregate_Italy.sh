@@ -22,7 +22,7 @@ LOG_DATE=$(date +"%Y-%m-%d %H:%M:%S [WDM_EXTRACT_AND_AGGREGATION_ITALY]")
 
 
 # checking parameters before anything
-if [ $# != 22 ]; then
+if [ $# != 24]; then
 	echo "Welfinity Aggregation"
 	echo "----------------------------------"
 	echo "Error : Wrong number of parameters"
@@ -50,7 +50,9 @@ if [ $# != 22 ]; then
 	echo "- wimDest 	             : [String], a destination folder, with format username@host:directory  'ressic@94.23.179.229:/data'"
 	echo "- nodi_host 	             : [String], the nodi replica host address i.e 94.23.179.225 "
 	echo "- nodi_user 	             : [String], the nodi user i.e  nodiuser "
-	echo "Example : ./Extract_and_Aggregate_Italy.sh 94.23.179.228 27017 talendUser ba+Req6@agu6 Pharmacies_list Italy markets Product_Dictionaries_Italy /data/aggregate/Italy/toAggregate/ /data/aggregate/Italy/Aggregated/ filetoaggregate.csv aggregated.xls /var/log/welfinity/talend/WDM/  italy_prp Product_ID '027546023,025369048,908924412' Transaction_Timestamp 01/01/2015 31/12/2017 'ressic@94.23.179.228:/data/Italy/toAggregate' 94.23.179.225 nodiuser"
+	echo "- TR001 Support Table      : [String], The TR001 Support Table Name"
+	echo "- TR017 Support Table      : [String], The TR017 Support Table Name"
+	echo "Example : ./Extract_and_Aggregate_Italy.sh 94.23.179.228 27017 talendUser ba+Req6@agu6 Pharmacies_list Italy markets Product_Dictionaries_Italy /data/aggregate/Italy/toAggregate/ /data/aggregate/Italy/Aggregated/ filetoaggregate.csv aggregated.xls /var/log/welfinity/talend/WDM/  italy_prp Product_ID '027546023,025369048,908924412' Transaction_Timestamp 01/01/2015 31/12/2017 'ressic@94.23.179.228:/data/Italy/toAggregate' 94.23.179.225 nodiuser TR001 TR017"
 	exit
 fi
 
@@ -78,6 +80,8 @@ PERIOD_END=$19
 WIM_DEST=$20
 NODI_HOST=$21
 NODI_USER=$22
+TR001=$23
+TR017=$24
 
 
 echo "parameters : "
@@ -92,7 +96,7 @@ echo "WIM_DEST : $WIM_DEST => $20"
 echo "NODI_HOST : $NODI_HOST => $21"
 echo "NODI_USER : $NODI_USER => $22"
 
-echo "$LOG_DATE parameters : DATABASE_URL => $1 DATABASE_PORT => $2 USERNAME => $3 PASSWORD => $4  DATABASE_PHARMACIES => $5 COLLECTION_PHARMACIES => $6 DATABASE_PRODUCTS => $7 DATABASE_FARMADATI => $8 SOURCE_DIRECTORY => $9 DEST_DIRECTORY => $10 SOURCE_FILE => $11 DEST_FILE => $12  $LOGDIR => $13 "
+echo "$LOG_DATE parameters : DATABASE_URL => $1 DATABASE_PORT => $2 USERNAME => $3 PASSWORD => $4  DATABASE_PHARMACIES => $5 COLLECTION_PHARMACIES => $6 DATABASE_PRODUCTS => $7 DATABASE_FARMADATI => $8 SOURCE_DIRECTORY => $9 DEST_DIRECTORY => $10 SOURCE_FILE => $11 DEST_FILE => $12  $LOGDIR => $13 $TR001 => $23 $TR017 => $24"
 
 
 echo "Extracting Data => $DOCUMENT  $FILTER_FIELD $FILTER_VALUE  $DATE_FIELD $PERIOD_START $PERIOD_END $WIM_DEST $NODI_HOST $NODI_USER "
@@ -100,6 +104,6 @@ echo "Extracting Data => $DOCUMENT  $FILTER_FIELD $FILTER_VALUE  $DATE_FIELD $PE
 echo "Data Extracted"
 
 
-echo "Aggragating Data => $DATABASE_URL $DATABASE_PORT $USERNAME $PASSWORD $DATABASE_PHARMACIES $COLLECTION_PHARMACIES $DATABASE_PRODUCTS $DATABASE_FARMADATI $SOURCE_DIR $DEST_DIR $SOURCE_FILE $DEST_FILE $LOGDIR "
-./Aggregation_Italy.sh $DATABASE_URL $DATABASE_PORT $USERNAME $PASSWORD $DATABASE_PHARMACIES $COLLECTION_PHARMACIES $DATABASE_PRODUCTS $DATABASE_FARMADATI $SOURCE_DIR $DEST_DIR $SOURCE_FILE $DEST_FILE $LOGDIR
+echo "Aggragating Data => $DATABASE_URL $DATABASE_PORT $USERNAME $PASSWORD $DATABASE_PHARMACIES $COLLECTION_PHARMACIES $DATABASE_PRODUCTS $DATABASE_FARMADATI $SOURCE_DIR $DEST_DIR $SOURCE_FILE $DEST_FILE $LOGDIR $TR001 $TR017"
+./Aggregation_Italy.sh $DATABASE_URL $DATABASE_PORT $USERNAME $PASSWORD $DATABASE_PHARMACIES $COLLECTION_PHARMACIES $DATABASE_PRODUCTS $DATABASE_FARMADATI $SOURCE_DIR $DEST_DIR $SOURCE_FILE $DEST_FILE $LOGDIR $TR001 $TR017
 echo "Data Aggregated"
