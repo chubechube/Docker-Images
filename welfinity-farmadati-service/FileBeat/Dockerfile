@@ -1,4 +1,4 @@
-FROM docker.elastic.co/beats/filebeat:5.6.3
+FROM docker.elastic.co/beats/filebeat:6.2.4
 
 # File Author / Maintainer
 MAINTAINER Cristiano Ressi Di Cervia
