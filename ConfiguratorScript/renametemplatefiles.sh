@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/usr/bin/env bash
 # Usage: rename the template files
 # 
 shopt -s globstar

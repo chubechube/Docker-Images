@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/usr/bin/env bash
 shopt -s extglob
 if [ $# -ne 5 ]; then
 	echo "Welfinity DeployStackScript "
@@ -16,18 +16,20 @@ fi
 
 
     SOURCE_DIR=$1
-    TEMP_DEST_DIR=$2
+    
     STACK_NAME=$3
     ENV_TYPE=$4
     PUSH=$5
-    DEPLOYSCRIPTDIR="$(dirname $(readlink -f $0))"
+   # DEPLOYSCRIPTDIR="$(dirname $(readlink -f $0))"
+    DEPLOYSCRIPTDIR="$(cd "$(dirname "$0")" && pwd -P)"
+    TEMP_DEST_DIR=$DEPLOYSCRIPTDIR/$2
     EXCLUDE_FILE="welfinity-exclude.txt"
 
 
     
     echo "----> $0 <---"
     echo "SOURCE_DIR    =   $1"
-    echo "TEMP_DEST_DIR =   $2"
+    echo "TEMP_DEST_DIR =   $TEMP_DEST_DIR"
     echo "STACK_NAME    =   $3"
     echo "DEPLOYDIR     =   $DEPLOYSCRIPTDIR"
     echo "ENV_TYPE      =   $4"
@@ -80,7 +82,7 @@ fi
 
 #replace values in template files
 echo -e "${whiteonblue} Configuring Rise script  ${endColor} "
-$DEPLOYSCRIPTDIR/configureRiseScriptScript.sh $RANCHER_URL $RANCHER_ACCESS_KEY $RANCHER_SECRET_KEY $RANCHER_ENVIRONMENT $TEMP_DEST_DIR
+. $DEPLOYSCRIPTDIR/configureRiseScriptScript.sh $RANCHER_URL $RANCHER_ACCESS_KEY $RANCHER_SECRET_KEY $RANCHER_ENVIRONMENT $TEMP_DEST_DIR
 echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor} \n  "
 
 echo -e "${whiteonblue} Configuring ELK Stack  ${endColor} "

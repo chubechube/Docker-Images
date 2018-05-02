@@ -1,4 +1,4 @@
-#!/bin/bash
+ #!/usr/bin/env bash
 # Usage: create file from template and replace  MOGNODB connection deatails
 # 
 shopt -s globstar
