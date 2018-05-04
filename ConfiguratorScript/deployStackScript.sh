@@ -1,4 +1,4 @@
- #!/usr/bin/env bash
+ #!/usr/local/bin/bash
 shopt -s extglob
 if [ $# -ne 5 ]; then
 	echo "Welfinity DeployStackScript "

@@ -4,9 +4,6 @@
 			"path": "ConfiguratorScript"
 		},
 		{
-			"path": "/home/cristisno/Sviluppo/Welfinity/Progetti-Bitbucket/UnixScripts/weaj"
-		},
-		{
 			"path": "welfinity-wim-market-service"
 		},
 		{
@@ -28,7 +25,7 @@
 			"path": "welfinity-wittj-service"
 		},
 		{
-			"path": "/home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_WebPortal/welfinity-webapp"
+			"path": "/Users/chube/Documents/Welfinity/Welfinity-Github-Repository/welfinity-webapp"
 		}
 	],
 	"settings": {

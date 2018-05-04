@@ -15,5 +15,17 @@ fi
     echo "STACK_NAME    =   $1"
 
 #Build stack
-rancher-compose  --url {RANCHER_URL} --access-key {RANCHER_ACCESS_KEY} --secret-key {RANCHER_SECRET_KEY} -p $1 up -d
+OS="`uname`"
+echo "OS --> $OS"
+case $OS in
+  'Linux')
+    OS='Linux'
+    rancher-compose  --url {RANCHER_URL} --access-key {RANCHER_ACCESS_KEY} --secret-key {RANCHER_SECRET_KEY} -p $1 up -d
+    ;;
+  'Darwin') 
+    OS='Mac'
+	/usr/local/bin/rancher-compose --url {RANCHER_URL} --access-key {RANCHER_ACCESS_KEY} --secret-key {RANCHER_SECRET_KEY} -p $1 up -d
+    ;;
+  *) ;;
+esac
 
