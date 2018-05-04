@@ -1,4 +1,4 @@
- #!/usr/bin/env bash
+#!/usr/bin/env bash
 # Usage: create file from template and replace  ELK Stack service name in it
 # 
 
