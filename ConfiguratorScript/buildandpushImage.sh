@@ -1,30 +1,40 @@
 #!/usr/bin/env bash
-# Usage: cchmod script files
 # 
 
-if [ $# -ne 1 ]; then
+if [ $# -ne 4 ]; then
 	echo "Welfinity buildandpushImage "
 	echo "----------------------------------"
 	echo "Error : Wrong number of parameters"
 	echo "The script must have the following parameters : "
-    echo "- STACKDIR             : [String], the stack directory"
-	echo "Example : ./buildandpushImage.sh ./WIM"
+    echo "- STACKDIR                : [String], the stack directory"
+    echo "- REGISTRY_URL            : [String], the docker registry config file to use"
+    echo "- REGISTRY_USER           : [String], the docker registry config file to use"
+    echo "- REGISTRY_PASSWORD       : [String], the docker registry config file to use"
+	echo "Example : ./buildandpushImage.sh ./WIM welfinity.com userA passwordA"
 	exit
 fi
 
  
     STACKDIR=$1
+    REGISTRY_URL=$2
+    REGISTRY_USER=$3
+    REGISTRY_PASSWORD=$4
 
 
     echo "----> $0 <---"
-    echo "STACKDIR              =   $1"
-
+    echo "STACKDIR              =   $STACKDIR"
+    echo "REGISTRY_URL          =   $REGISTRY_URL"
+    echo "REGISTRY_USER         =   $REGISTRY_USER"
+    echo "REGISTRY_PASSWORD     =   $REGISTRY_PASSWORD"
     
 # cd to dest dir
     cd $STACKDIR
 
     shopt -s nullglob
     shopt -s globstar
+
+
+
 
 for i in **/*Dockerfile; do 
     echo "Processing $i"
@@ -46,7 +56,9 @@ for i in **/*Dockerfile; do
         echo "There is no configuration file call ${configfile}"
     fi
     
-    docker build -t $DOCKERIMAGE $(pwd)/$(dirname $i)
+    docker login $REGISTRY_URL -u $REGISTRY_USER -p $REGISTRY_PASSWORD
+    echo " COMMMAND --- >  docker build -t $DOCKERIMAGE /$(pwd)/$(dirname $i) "
+    docker build -t $DOCKERIMAGE /$(pwd)/$(dirname $i)
     docker push     $DOCKERIMAGE 
 
 done

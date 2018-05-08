@@ -3,7 +3,7 @@ volumes:
   mongodata: {}
 services:
   MongoDB:
-    image: chube/welfinity_mongo:latest
+    image: {IMAGE_PREFIX}/welfinity_mongo:latest
     hostname: WelfinityMongo
     ports:
     - 27017:27017/tcp

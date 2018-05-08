@@ -1,0 +1,394 @@
+----> ./deployStackScript.sh <---
+SOURCE_DIR    =   ../welfinity-elk-service/
+TEMP_DEST_DIR =   ../testelkstack/
+STACK_NAME    =   welfinity-elk-service
+DEPLOYDIR     =   /home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_Services/ConfiguratorScript
+ENV_TYPE      =   testing
+DEPLOY        =   2
+REGISTRY      =   welfinity
+ [04;30;47m  Deploy welfinity-elk-service  in [04;31;47m testing [0m 
+sending incremental file list
+./
+deploy.config.production
+            305 100%    0.00kB/s    0:00:00              305 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=29/31)
+deploy.config.testing
+            299 100%  291.99kB/s    0:00:00              299 100%  291.99kB/s    0:00:00 (xfr#2, to-chk=28/31)
+docker-compose.yml+template
+          1,507 100%    1.44MB/s    0:00:00            1,507 100%    1.44MB/s    0:00:00 (xfr#3, to-chk=27/31)
+grokfilter.txt
+            205 100%  200.20kB/s    0:00:00              205 100%  200.20kB/s    0:00:00 (xfr#4, to-chk=26/31)
+rancher-compose.yml
+            232 100%  226.56kB/s    0:00:00              232 100%  226.56kB/s    0:00:00 (xfr#5, to-chk=25/31)
+registry.config.chube
+            102 100%   99.61kB/s    0:00:00              102 100%   99.61kB/s    0:00:00 (xfr#6, to-chk=24/31)
+registry.config.welfinity
+            117 100%  114.26kB/s    0:00:00              117 100%  114.26kB/s    0:00:00 (xfr#7, to-chk=23/31)
+riseScript.sh+template
+            788 100%  769.53kB/s    0:00:00              788 100%  769.53kB/s    0:00:00 (xfr#8, to-chk=22/31)
+Kibana/
+Kibana/Dockerfile
+            284 100%  277.34kB/s    0:00:00              284 100%  277.34kB/s    0:00:00 (xfr#9, to-chk=18/31)
+Kibana/build.config+template
+             44 100%   42.97kB/s    0:00:00               44 100%   42.97kB/s    0:00:00 (xfr#10, to-chk=17/31)
+Kibana/config/
+Kibana/config/kibana.yml
+          4,711 100%    4.49MB/s    0:00:00            4,711 100%    4.49MB/s    0:00:00 (xfr#11, to-chk=15/31)
+KibanaTool/
+KibanaTool/Dockerfile
+            661 100%  645.51kB/s    0:00:00              661 100%  645.51kB/s    0:00:00 (xfr#12, to-chk=14/31)
+KibanaTool/build.config+template
+             45 100%   43.95kB/s    0:00:00               45 100%   43.95kB/s    0:00:00 (xfr#13, to-chk=13/31)
+KibanaTool/DashboardAndVisualization/
+KibanaTool/DashboardAndVisualization/import.sh+template
+            234 100%  228.52kB/s    0:00:00              234 100%  228.52kB/s    0:00:00 (xfr#14, to-chk=10/31)
+KibanaTool/DashboardAndVisualization/kibana_index_data.json
+         32,768  55%   31.25MB/s    0:00:00           58,968 100%   56.24MB/s    0:00:00 (xfr#15, to-chk=9/31)
+KibanaTool/DashboardAndVisualization/kibana_index_mapping.json
+          2,697 100%    2.57MB/s    0:00:00            2,697 100%    2.57MB/s    0:00:00 (xfr#16, to-chk=8/31)
+KibanaTool/Maintenance/
+KibanaTool/Maintenance/deletedocuments.js+template
+            760 100%  742.19kB/s    0:00:00              760 100%  742.19kB/s    0:00:00 (xfr#17, to-chk=7/31)
+KibanaTool/Maintenance/deletedocuments.sh
+             45 100%   43.95kB/s    0:00:00               45 100%   43.95kB/s    0:00:00 (xfr#18, to-chk=6/31)
+Logstash/
+Logstash/Dockerfile
+            459 100%  448.24kB/s    0:00:00              459 100%  448.24kB/s    0:00:00 (xfr#19, to-chk=5/31)
+Logstash/build.config+template
+             46 100%   44.92kB/s    0:00:00               46 100%   44.92kB/s    0:00:00 (xfr#20, to-chk=4/31)
+Logstash/config/
+Logstash/config/logstash.yml
+          6,468 100%    6.17MB/s    0:00:00            6,468 100%    6.17MB/s    0:00:00 (xfr#21, to-chk=1/31)
+Logstash/pipeline/
+Logstash/pipeline/logstash-simple.conf
+          4,601 100%    4.39MB/s    0:00:00            4,601 100%    4.39MB/s    0:00:00 (xfr#22, to-chk=0/31)
+USING CONFIG FILE deploy.config.testing
+USING CONFIG FILE registry.config.welfinity
+[0;37;44m Configuring Rise script  [0m 
+----> ./deployStackScript.sh <---
+RANCHER_URL           =   http://94.23.179.226:8080
+RANCHER_ACCESS_KEY    =   B9A804A459E2E4B4740A
+RANCHER_SECRET_KEY    =   8bNu9VZr4zepeVGSDFLR1aRs94wUSNXz74pQ8Hsx
+RANCHER_ENVIRONMENT   =   environment=monitoring_dev
+STACKDIR              =   ../testelkstack/
+Processing riseScript.sh+template
+Processing docker-compose.yml+template
+[0;37;44m ---------------------------------------------------------------  [0m 
+  
+[0;37;44m Configuring ELK Stack  [0m 
+----> /home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_Services/ConfiguratorScript/configureELKstack.sh <---
+ELKSTACK = welfinity-elk-service
+STACKDIR = ../testelkstack/
+Processing docker-compose.yml+template
+Processing Kibana/build.config+template
+Processing KibanaTool/build.config+template
+Processing KibanaTool/DashboardAndVisualization/import.sh+template
+Processing KibanaTool/Maintenance/deletedocuments.js+template
+Processing Logstash/build.config+template
+Processing riseScript.sh+template
+[0;37;44m ---------------------------------------------------------------  [0m 
+ 
+[0;37;44m Configuring REGISTRY Stack  [0m 
+----> /home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_Services/ConfiguratorScript/configureRegistry.sh <---
+REGISTRY_URL = docker.sailstream.eu
+REGISTRY_USER = ressic
+IMAGE_PREFIX = docker.sailstream.eu
+STACKDIR = ../testelkstack/
+Processing docker-compose.yml+template
+Processing Kibana/build.config+template
+Processing KibanaTool/build.config+template
+Processing KibanaTool/DashboardAndVisualization/import.sh+template
+Processing KibanaTool/Maintenance/deletedocuments.js+template
+Processing Logstash/build.config+template
+Processing riseScript.sh+template
+[0;37;44m ---------------------------------------------------------------  [0m 
+ 
+[0;37;44m Configuring MongoDB  [0m 
+----> /home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_Services/ConfiguratorScript/configureMongoDb.sh <---
+MONGODB_ADDRESS           =   94.23.179.229
+MONGODB_PORT              =   27017
+STACKDIR                  =   ../testelkstack/
+Processing docker-compose.yml+template
+Processing Kibana/build.config+template
+Processing KibanaTool/build.config+template
+Processing KibanaTool/DashboardAndVisualization/import.sh+template
+Processing KibanaTool/Maintenance/deletedocuments.js+template
+Processing Logstash/build.config+template
+Processing riseScript.sh+template
+[0;37;44m ---------------------------------------------------------------  [0m  
+ 
+[0;37;44m Generating file from templates  [0m 
+----> /home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_Services/ConfiguratorScript/renametemplatefiles.sh <---
+STACKDIR = ../testelkstack/
+----> New Filename docker-compose.yml <----
+----> New Filename Kibana/build.config <----
+----> New Filename KibanaTool/build.config <----
+----> New Filename KibanaTool/DashboardAndVisualization/import.sh <----
+----> New Filename KibanaTool/Maintenance/deletedocuments.js <----
+----> New Filename Logstash/build.config <----
+----> New Filename riseScript.sh <----
+[0;37;44m ---------------------------------------------------------------  [0m 
+  
+[0;37;44m Setting file permissions  [0m 
+----> /home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_Services/ConfiguratorScript/configureScriptPermission.sh <---
+STACKDIR              =   ../testelkstack/
+Processing KibanaTool/DashboardAndVisualization/import.sh
+Processing KibanaTool/Maintenance/deletedocuments.sh
+Processing riseScript.sh
+[0;37;44m ---------------------------------------------------------------  [0m  
+  
+[0;37;44m Building and Deploying Images  [0m 
+----> /home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_Services/ConfiguratorScript/buildandpushImage.sh <---
+STACKDIR              =   ../testelkstack/
+REGISTRY_URL          =   docker.sailstream.eu
+REGISTRY_USER         =   ressic
+REGISTRY_PASSWORD     =   welfinity
+Processing Kibana/Dockerfile
+DIRECTORY /home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_Services/testelkstack/Kibana
+Login Succeeded
+ COMMMAND --- >  docker build -t docker.sailstream.eu/elk_kibana:latest //home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_Services/testelkstack/Kibana 
+Sending build context to Docker daemon  9.216kB
+Step 1/6 : FROM docker.elastic.co/kibana/kibana:5.6.2
+ ---> 5b27c7e97a53
+Step 2/6 : LABEL maintainer="Cristiano Ressi Di Cervia"
+ ---> Using cache
+ ---> 0c61ce912059
+Step 3/6 : ENV KIBANA_CONFIG_DIR  /usr/share/kibana/config/
+ ---> Using cache
+ ---> ddf15b2f2bf6
+Step 4/6 : USER root
+ ---> Using cache
+ ---> e595b182ed72
+Step 5/6 : RUN mkdir -p $KIBANA_CONFIG_DIR
+ ---> Using cache
+ ---> 9b7a9fb3fca2
+Step 6/6 : ADD config $KIBANA_CONFIG_DIR
+ ---> Using cache
+ ---> 2118ae7bf151
+Successfully built 2118ae7bf151
+Successfully tagged docker.sailstream.eu/elk_kibana:latest
+The push refers to repository [docker.sailstream.eu/elk_kibana]
+096bf18f5416: Preparing
+7a0afdb90264: Preparing
+3199eae2bc0d: Preparing
+1dbe7f4359b4: Preparing
+0c8fffe008d3: Preparing
+b27821ba1bb0: Preparing
+7cbb42a02883: Preparing
+cd5a5eb602f3: Preparing
+12c5d8bb2741: Preparing
+cf516324493c: Preparing
+7cbb42a02883: Waiting
+cd5a5eb602f3: Waiting
+12c5d8bb2741: Waiting
+cf516324493c: Waiting
+b27821ba1bb0: Waiting
+1dbe7f4359b4: Layer already exists
+0c8fffe008d3: Layer already exists
+096bf18f5416: Layer already exists
+3199eae2bc0d: Layer already exists
+7a0afdb90264: Layer already exists
+cf516324493c: Layer already exists
+12c5d8bb2741: Layer already exists
+7cbb42a02883: Layer already exists
+b27821ba1bb0: Layer already exists
+cd5a5eb602f3: Layer already exists
+latest: digest: sha256:538b097f06fb4e492b27940602fcdc3061a1be4322db8d8831b9c63d4ae8749a size: 2411
+Processing KibanaTool/Dockerfile
+DIRECTORY /home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_Services/testelkstack/KibanaTool
+Login Succeeded
+ COMMMAND --- >  docker build -t docker.sailstream.eu/kibana_tool:latest //home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_Services/testelkstack/KibanaTool 
+Sending build context to Docker daemon  71.68kB
+Step 1/13 : FROM alpine:3.5
+ ---> 6c6084ed97e5
+Step 2/13 : LABEL maintainer="Cristiano Ressi Di Cervia"
+ ---> Using cache
+ ---> 70b286b5a6b9
+Step 3/13 : ENV KIBANA_DIR /opt/welfinity/Kibana
+ ---> Using cache
+ ---> 27fb29659a84
+Step 4/13 : USER root
+ ---> Using cache
+ ---> 523c87a65d87
+Step 5/13 : RUN apk --update add bash nodejs && rm -rf /var/cache/apk/*
+ ---> Using cache
+ ---> f20729c5c5dc
+Step 6/13 : RUN mkdir -p $KIBANA_DIR
+ ---> Using cache
+ ---> 4c3ae6ea38e5
+Step 7/13 : RUN cd $KIBANA_DIR
+ ---> Using cache
+ ---> 25c0a7f2a7d8
+Step 8/13 : RUN npm install -g elasticdump && rm -rf /var/cache/apk/*
+ ---> Using cache
+ ---> 924a91c5a90e
+Step 9/13 : RUN npm install  elasticsearch && rm -rf /var/cache/apk/*
+ ---> Using cache
+ ---> b5e67b673784
+Step 10/13 : ADD DashboardAndVisualization $KIBANA_DIR
+ ---> Using cache
+ ---> 069e2701f25b
+Step 11/13 : ADD Maintenance $KIBANA_DIR
+ ---> Using cache
+ ---> 74d15fdd553e
+Step 12/13 : WORKDIR $KIBANA_DIR
+ ---> Using cache
+ ---> 181475ef10b5
+Step 13/13 : RUN echo '00 20 * * * /opt/welfinity/Kibana/deletedocuments.sh' > /etc/crontabs/root
+ ---> Using cache
+ ---> 5c381a7c062e
+Successfully built 5c381a7c062e
+Successfully tagged docker.sailstream.eu/kibana_tool:latest
+The push refers to repository [docker.sailstream.eu/kibana_tool]
+4326948740f5: Preparing
+9cdfc4cd4eab: Preparing
+8a4cc8040e35: Preparing
+eba170cd84b6: Preparing
+9ef0fa0c8875: Preparing
+46b6d77de01e: Preparing
+eb6b101b660a: Preparing
+d39d92664027: Preparing
+46b6d77de01e: Waiting
+eb6b101b660a: Waiting
+d39d92664027: Waiting
+9cdfc4cd4eab: Layer already exists
+8a4cc8040e35: Layer already exists
+9ef0fa0c8875: Layer already exists
+eba170cd84b6: Layer already exists
+4326948740f5: Layer already exists
+eb6b101b660a: Layer already exists
+46b6d77de01e: Layer already exists
+d39d92664027: Layer already exists
+latest: digest: sha256:40d70f48f5f505dfa736520dc00b63576bd92c17369c62ff1ffc3f772fc700b7 size: 1992
+Processing Logstash/Dockerfile
+DIRECTORY /home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_Services/testelkstack/Logstash
+Login Succeeded
+ COMMMAND --- >  docker build -t docker.sailstream.eu/elk_logstash:latest //home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_Services/testelkstack/Logstash 
+Sending build context to Docker daemon  16.38kB
+Step 1/10 : FROM docker.elastic.co/logstash/logstash:5.6.2
+5.6.2: Pulling from logstash/logstash
+d9aaf4d82f24: Already exists
+cd390d97fe4a: Pulling fs layer
+c5d400b275be: Pulling fs layer
+ddf8a8b35fe1: Pulling fs layer
+70ea7efb19fb: Pulling fs layer
+9daea99ded10: Pulling fs layer
+b5fcbb374eb1: Pulling fs layer
+fe1c0684acc5: Pulling fs layer
+2ade3b16fc6f: Pulling fs layer
+48439d09f2f4: Pulling fs layer
+6a1f9a581830: Pulling fs layer
+b5fcbb374eb1: Waiting
+fe1c0684acc5: Waiting
+2ade3b16fc6f: Waiting
+48439d09f2f4: Waiting
+6a1f9a581830: Waiting
+70ea7efb19fb: Waiting
+9daea99ded10: Waiting
+c5d400b275be: Verifying Checksum
+c5d400b275be: Download complete
+70ea7efb19fb: Download complete
+9daea99ded10: Download complete
+b5fcbb374eb1: Verifying Checksum
+b5fcbb374eb1: Download complete
+fe1c0684acc5: Download complete
+2ade3b16fc6f: Verifying Checksum
+2ade3b16fc6f: Download complete
+48439d09f2f4: Verifying Checksum
+48439d09f2f4: Download complete
+6a1f9a581830: Verifying Checksum
+6a1f9a581830: Download complete
+cd390d97fe4a: Verifying Checksum
+cd390d97fe4a: Download complete
+ddf8a8b35fe1: Verifying Checksum
+ddf8a8b35fe1: Download complete
+cd390d97fe4a: Pull complete
+c5d400b275be: Pull complete
+ddf8a8b35fe1: Pull complete
+70ea7efb19fb: Pull complete
+9daea99ded10: Pull complete
+b5fcbb374eb1: Pull complete
+fe1c0684acc5: Pull complete
+2ade3b16fc6f: Pull complete
+48439d09f2f4: Pull complete
+6a1f9a581830: Pull complete
+Digest: sha256:9529682ed733390c704264e4f61070ecac801691254c786af44bb780bd2cbacd
+Status: Downloaded newer image for docker.elastic.co/logstash/logstash:5.6.2
+ ---> 0a28dae3fd86
+Step 2/10 : LABEL maintainer="Cristiano Ressi Di Cervia"
+ ---> Running in 278fd81b16a9
+Removing intermediate container 278fd81b16a9
+ ---> 745ce7f0198b
+Step 3/10 : ENV LOGSTASH_CONFIG_DIR   /usr/share/logstash/config/
+ ---> Running in 1ab0c8e34837
+Removing intermediate container 1ab0c8e34837
+ ---> 96fa30619e4f
+Step 4/10 : ENV LOGSTASH_PIPELINE_DIR /usr/share/logstash/pipeline/
+ ---> Running in 40b70eda0843
+Removing intermediate container 40b70eda0843
+ ---> 80755cdf97e1
+Step 5/10 : USER root
+ ---> Running in f776d2299c26
+Removing intermediate container f776d2299c26
+ ---> 57827f0ae22c
+Step 6/10 : RUN mkdir -p $LOGSTASH_CONFIG_DIR
+ ---> Running in 0d1cb5ca3cf8
+Removing intermediate container 0d1cb5ca3cf8
+ ---> 6889d0170325
+Step 7/10 : RUN mkdir -p $LOGSTASH_PIPELINE_DIR
+ ---> Running in afd84fdad59f
+Removing intermediate container afd84fdad59f
+ ---> 2923f93eba3c
+Step 8/10 : ADD config $LOGSTASH_CONFIG_DIR
+ ---> b3195527cc28
+Step 9/10 : RUN rm $LOGSTASH_PIPELINE_DIR/*.*
+ ---> Running in f1292ed36127
+Removing intermediate container f1292ed36127
+ ---> a2a294ebbc1d
+Step 10/10 : ADD pipeline $LOGSTASH_PIPELINE_DIR
+ ---> a3a5aabedb73
+Successfully built a3a5aabedb73
+Successfully tagged docker.sailstream.eu/elk_logstash:latest
+The push refers to repository [docker.sailstream.eu/elk_logstash]
+f67cefa7a5f0: Preparing
+81879a6b521a: Preparing
+42ecef2bfc9c: Preparing
+83768c8cb30a: Preparing
+cc437466b890: Preparing
+d682a3df36f9: Preparing
+1ff4aa93add9: Preparing
+655e65b5fdfb: Preparing
+931353d1d29b: Preparing
+11b917e5ae21: Preparing
+7473b4f122eb: Preparing
+a884eff23cdd: Preparing
+965540a9626e: Preparing
+cf516324493c: Preparing
+655e65b5fdfb: Waiting
+931353d1d29b: Waiting
+11b917e5ae21: Waiting
+7473b4f122eb: Waiting
+a884eff23cdd: Waiting
+965540a9626e: Waiting
+cf516324493c: Waiting
+d682a3df36f9: Waiting
+1ff4aa93add9: Waiting
+42ecef2bfc9c: Pushed
+f67cefa7a5f0: Pushed
+81879a6b521a: Pushed
+cc437466b890: Pushed
+83768c8cb30a: Pushed
+d682a3df36f9: Pushed
+1ff4aa93add9: Pushed
+655e65b5fdfb: Pushed
+931353d1d29b: Pushed
+11b917e5ae21: Pushed
+cf516324493c: Mounted from elk_kibana
+a884eff23cdd: Pushed
+965540a9626e: Pushed
+7473b4f122eb: Pushed
+latest: digest: sha256:cd433ed865b39267a5213902fae49965290cfadb94d6f24bc2879e42018016f1 size: 3241
+[0;37;44m ---------------------------------------------------------------  [0m 
+  
+[0;37;44m CLean up  [0m 
+[0;37;44m ---------------------------------------------------------------  [0m  
+ 

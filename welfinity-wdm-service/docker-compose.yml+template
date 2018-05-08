@@ -4,7 +4,7 @@ volumes:
 
 services:
   FileBeat:
-    image: chube/filebeatwdm:latest
+    image: {IMAGE_PREFIX}/filebeatwdm:latest
     labels:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
@@ -13,7 +13,7 @@ services:
     - logcontainer:/var/log/welfinity/
     stdin_open: true
   WDMService:
-    image: chube/wdmservice:latest
+    image: {IMAGE_PREFIX}/wdmservice:latest
     labels:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"

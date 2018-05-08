@@ -141,7 +141,7 @@ filebeat.prospectors:
 #----------------------------- Logstash output --------------------------------
 output.logstash:
   # The Logstash hosts
-  hosts: ["logstash.{ELK-STACK}:5044"]
+  hosts: ["logstash.welfinity-elk-service:5044"]
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications

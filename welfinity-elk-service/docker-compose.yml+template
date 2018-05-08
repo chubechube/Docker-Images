@@ -3,7 +3,7 @@ volumes:
   esdata: {} 
 services: 
   Kibana: 
-    image: chube/elk_kibana 
+    image: {IMAGE_PREFIX}/elk_kibana 
     hostname: WelfinityKibana 
     environment: 
       XPACK_MONITORING_ENABLED: 'false' 
@@ -15,7 +15,7 @@ services:
       io.rancher.container.pull_image: always 
       io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}" 
   Kibanatool: 
-    image: chube/kibana_tool 
+    image: {IMAGE_PREFIX}/kibana_tool 
     hostname: KibanaTool 
     environment: 
       XPACK_MONITORING_ENABLED: 'false' 
@@ -42,7 +42,7 @@ services:
       io.rancher.container.pull_image: always 
       io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}" 
   LogStash: 
-    image: chube/elk_logstash 
+    image: {IMAGE_PREFIX}/elk_logstash 
     hostname: WelfinityLogstash 
     stdin_open: true 
     tty: true 

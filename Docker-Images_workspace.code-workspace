@@ -16,9 +16,6 @@
 			"path": "welfinity-elk-service"
 		},
 		{
-			"path": "welfinity-farmadati-service"
-		},
-		{
 			"path": "welfinity-wdm-service"
 		},
 		{
@@ -26,6 +23,9 @@
 		},
 		{
 			"path": "/home/cristiano/Welfinity/Sviluppo/Welfinity_Private_Repositories/Welfinity_WebPortal"
+		},
+		{
+			"path": "welfinity-farmadati-service"
 		}
 	],
 	"settings": {

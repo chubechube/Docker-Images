@@ -4,7 +4,7 @@ volumes:
   datacontainer: {}
 services:
   FileBeat:
-    image: chube/filebeatfarmadati:latest
+    image: {IMAGE_PREFIX}/filebeatfarmadati:latest
     volumes:
     - logcontainer:/var/log/welfinity/
     labels:
@@ -13,7 +13,7 @@ services:
     tty: true
     stdin_open: true
   FarmadatiTalendJobs:
-    image: chube/farmadatiservice:latest
+    image: {IMAGE_PREFIX}/farmadatiservice:latest
     volumes:
     - logcontainer:/var/log/welfinity/
     labels:
