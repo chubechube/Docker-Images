@@ -7,7 +7,7 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
     tty: true
-    image: {IMAGE_PREFIX}}/filebeatpls:latest
+    image: {IMAGE_PREFIX}/filebeatpls:latest
     volumes:
     - logcontainer:/var/log/welfinity/
     stdin_open: true
@@ -16,7 +16,7 @@ services:
       io.rancher.container.pull_image: always
       io.rancher.scheduler.affinity:host_label: "{RANCHER_ENVIRONMENT}"
     tty: true
-    image: {IMAGE_PREFIX}}/pharmacyload:latest
+    image: {IMAGE_PREFIX}/pharmacyload:latest
     volumes:
     - logcontainer:/var/log/welfinity/
     stdin_open: true
