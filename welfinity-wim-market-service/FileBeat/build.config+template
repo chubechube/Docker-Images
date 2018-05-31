@@ -1,1 +1,1 @@
-DOCKERIMAGE={IMAGE_PREFIX}/filebeatwim:latest
+DOCKERIMAGE={IMAGE_PREFIX}/filebeatwimms:latest

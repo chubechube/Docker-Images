@@ -1,1 +1,1 @@
-DOCKERIMAGE={IMAGE_PREFIX}/wimservice:latest
+DOCKERIMAGE={IMAGE_PREFIX}/wimservicems:latest

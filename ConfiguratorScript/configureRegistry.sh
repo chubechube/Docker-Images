@@ -4,15 +4,15 @@
 
 
 if [ $# -ne 4 ]; then
-	echo "Welfinity ConfigureFileBeatcript "
+	echo "Welfinity ConfigureRegistry "
 	echo "----------------------------------"
 	echo "Error : Wrong number of parameters"
 	echo "The script must have the following parameters : "
-    echo "- REGISTRY_URL            : [String], the docker registry config file to use"
+    echo "- REGISTRY_URL            : [String], the docker registry URL file to use"
     echo "- REGISTRY_USER           : [String], the stack user"
     echo "- IMAGE_PREFIX            : [String], the image prefix to be used for tagging"
     echo "- STACKDIR                : [String], the stack directory"
-	echo "Example : ./configureELKScript.sh  welfinity.com ./WIM"
+	echo "Example : ./configuregistry.sh  welfinity.com ressic welfinity ./WIM "
 	exit
 fi
 
