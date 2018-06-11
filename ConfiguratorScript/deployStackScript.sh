@@ -124,10 +124,21 @@ echo -e "${whiteonblue} Generating file from templates  ${endColor} "
 $DEPLOYSCRIPTDIR/renametemplatefiles.sh $TEMP_DEST_DIR
 echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor} \n  "
 
+#execute specific service configuration files
+echo -e "${whiteonblue} Executing Local Service Configuration Scripts  ${endColor} "
+$DEPLOYSCRIPTDIR/executeLocalConfigurationFiles.sh $TEMP_DEST_DIR
+echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor} \n  "
+
 #Now setting all permissions
 echo -e "${whiteonblue} Setting file permissions  ${endColor} "
 $DEPLOYSCRIPTDIR/configureScriptPermission.sh $TEMP_DEST_DIR
 echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor}  \n  "
+
+#execute specific service configuration files
+echo -e "${whiteonblue} Executing Local Service Configuration Scripts  ${endColor} "
+$DEPLOYSCRIPTDIR/executeLocalConfigurationFiles.sh $TEMP_DEST_DIR
+echo -e "${whiteonblue} ---------------------------------------------------------------  ${endColor} \n  "
+
 
 if [ "$DEPLOY" == "0" ]
 then
